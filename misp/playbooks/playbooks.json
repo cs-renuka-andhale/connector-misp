@@ -1,0 +1,1090 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - MISP - 2.0.0",
+      "description": "Sample playbooks for \"MISP\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": "/api/3/images/80a5beb8-c433-467e-bab1-6525080a1e10",
+      "uuid": "dede779e-d81b-484b-8d4d-f4894cb548df",
+      "recordTags": [],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Add Tag",
+          "aliasName": null,
+          "description": "Adds a tag in MISP based on the parameters that you have specified.",
+          "collection": "/api/3/workflow_collections/dede779e-d81b-484b-8d4d-f4894cb548df",
+          "tag": "#MISP",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/fb315dd4-15ca-4a1d-8eab-894ed03fb7bb",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Add Tag",
+              "description": null,
+              "arguments": {
+                "name": "MISP",
+                "config": "",
+                "params": {
+                  "name": "Add Tag",
+                  "org_id": false,
+                  "user_id": false,
+                  "hide_tag": false,
+                  "exportable": false
+                },
+                "version": "2.0.0",
+                "connector": "misp",
+                "operation": "add_tag",
+                "operationTitle": "Add Tag",
+                "step_variables": []
+              },
+              "status": null,
+              "left": "125",
+              "top": "165",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "54d17f5f-1f53-4274-a300-be59e286115c"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "f01e2e04-f1cb-4752-b0f6-df4ea38f43ce",
+                "title": "MISP: Add Tag",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "125",
+              "top": "30",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "fb315dd4-15ca-4a1d-8eab-894ed03fb7bb"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "40d12da5-14c2-4bf3-9b30-605b345843b2",
+              "name": "Start -> Add Tag",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/54d17f5f-1f53-4274-a300-be59e286115c",
+              "sourceStep": "/api/3/workflow_steps/fb315dd4-15ca-4a1d-8eab-894ed03fb7bb"
+            }
+          ],
+          "versions": [],
+          "lastModifyDate": 1601962150,
+          "uuid": "303599d0-4b36-4aa3-9cc0-88824526e65a",
+          "recordTags": [
+            "MISP"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Run Search",
+          "aliasName": null,
+          "description": "Search for events or attributes in MISP",
+          "collection": "/api/3/workflow_collections/dede779e-d81b-484b-8d4d-f4894cb548df",
+          "tag": "#MISP",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/87f39e28-44e2-4e63-b16d-20daa6eecb07",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Run Search",
+              "description": null,
+              "arguments": {
+                "name": "MISP",
+                "config": "",
+                "params": {
+                  "tags": "",
+                  "other": "{\n  \"values\": \"8.8.8.3\"\n}",
+                  "filter": "{\n    \"returnFormat\": \"json\",\n    \"type\": {\n        \"OR\": [\n            \"ip-src\",\n            \"ip-dst\"\n        ]\n    }\n}",
+                  "by_uuid": "5a54a0c1-6a5c-4c46-8d11-0437c0a83281",
+                  "category": "Network activity",
+                  "event_ids": "59",
+                  "published": true,
+                  "controller": "Events",
+                  "max_results": 12,
+                  "attribute_type": "ip-src"
+                },
+                "version": "2.0.0",
+                "connector": "misp",
+                "operation": "run_search",
+                "operationTitle": "Run Search",
+                "step_variables": [],
+                "operationOutput": []
+              },
+              "status": null,
+              "left": "125",
+              "top": "165",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "0c659c81-b9b7-4883-9f1c-7f4b6c6f67ea"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "1bcd9c9c-91ec-4d0c-b47d-afd7139d0e57",
+                "title": "MISP: Run Search",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "125",
+              "top": "30",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "87f39e28-44e2-4e63-b16d-20daa6eecb07"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "d7e50a59-e8f9-424e-8bb4-afbcfe1f8b72",
+              "name": "Start -> Run Search",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/0c659c81-b9b7-4883-9f1c-7f4b6c6f67ea",
+              "sourceStep": "/api/3/workflow_steps/87f39e28-44e2-4e63-b16d-20daa6eecb07"
+            }
+          ],
+          "versions": [],
+          "lastModifyDate": 1599463510,
+          "uuid": "3d88125d-3103-4c68-adae-ea2d56d8b70a",
+          "recordTags": [
+            "MISP"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete Event",
+          "aliasName": null,
+          "description": "Delete event from MISP using event ID",
+          "collection": "/api/3/workflow_collections/dede779e-d81b-484b-8d4d-f4894cb548df",
+          "tag": "#MISP",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/d62124a5-b984-4138-9d45-4464a7f67c95",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete Event",
+              "description": null,
+              "arguments": {
+                "name": "MISP",
+                "config": "",
+                "params": {
+                  "event_id": 10
+                },
+                "version": "2.0.0",
+                "connector": "misp",
+                "operation": "delete_event",
+                "operationTitle": "Delete Event",
+                "step_variables": [],
+                "operationOutput": {
+                  "url": "",
+                  "name": "",
+                  "message": ""
+                }
+              },
+              "status": null,
+              "left": "125",
+              "top": "165",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "207d4d88-f662-4701-96ee-d3ce79df0909"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "0ac60829-f900-4215-a439-c1db4b3706e7",
+                "title": "MISP: Delete Event",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "125",
+              "top": "30",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "d62124a5-b984-4138-9d45-4464a7f67c95"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "fbe7b4f2-54b3-4462-8501-cf32bc1f9031",
+              "name": "Alerts -> Delete Event",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/207d4d88-f662-4701-96ee-d3ce79df0909",
+              "sourceStep": "/api/3/workflow_steps/d62124a5-b984-4138-9d45-4464a7f67c95"
+            }
+          ],
+          "versions": [],
+          "lastModifyDate": 1599463431,
+          "uuid": "4e290ff3-2d5a-440e-9c9a-0ab9bf8697a9",
+          "recordTags": [
+            "MISP"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Add Tag to Event",
+          "aliasName": null,
+          "description": "Adds an specific tag to specific event which was already created in MISP based on the event ID that you specify",
+          "collection": "/api/3/workflow_collections/dede779e-d81b-484b-8d4d-f4894cb548df",
+          "tag": "#MISP",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/655e3f5d-51ac-4d81-9dc4-6eb306d7abb1",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "650cf3e1-94c1-4b9c-acc2-0a6bed045a81",
+                "title": "MISP: Add Tag to Event",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "125",
+              "top": "30",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "655e3f5d-51ac-4d81-9dc4-6eb306d7abb1"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Add Tag to Event",
+              "description": null,
+              "arguments": {
+                "name": "MISP",
+                "config": "",
+                "params": {
+                  "tag": "2",
+                  "event_id": 9
+                },
+                "version": "2.0.0",
+                "connector": "misp",
+                "operation": "add_tag_to_event",
+                "operationTitle": "Add Tag to Event",
+                "step_variables": []
+              },
+              "status": null,
+              "left": "125",
+              "top": "165",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "c073bde2-ec79-45a5-8ca9-31e1655f31f7"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "217ec806-0c56-49f7-b4ce-9a8b65ceb74f",
+              "name": "Start -> Add Tag to Event",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/c073bde2-ec79-45a5-8ca9-31e1655f31f7",
+              "sourceStep": "/api/3/workflow_steps/655e3f5d-51ac-4d81-9dc4-6eb306d7abb1"
+            }
+          ],
+          "versions": [],
+          "lastModifyDate": 1599463363,
+          "uuid": "6cbf0407-f75f-4beb-a3f6-991a08c0215d",
+          "recordTags": [
+            "MISP"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Event",
+          "aliasName": null,
+          "description": "Get event information using event ID",
+          "collection": "/api/3/workflow_collections/dede779e-d81b-484b-8d4d-f4894cb548df",
+          "tag": "#MISP",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/e04aeb13-4f31-43d2-af90-526b712b9055",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "bd403d89-7e85-4874-bc95-210fc25277fc",
+                "title": "MISP: Get Event",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "125",
+              "top": "30",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "e04aeb13-4f31-43d2-af90-526b712b9055"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Event",
+              "description": null,
+              "arguments": {
+                "name": "MISP",
+                "config": "",
+                "params": {
+                  "event_id": 10
+                },
+                "version": "2.0.0",
+                "connector": "misp",
+                "operation": "get_event",
+                "operationTitle": "Get Event",
+                "step_variables": [],
+                "operationOutput": {
+                  "Event": {
+                    "id": "",
+                    "Org": [],
+                    "Orgc": [],
+                    "date": "",
+                    "info": "",
+                    "uuid": "",
+                    "Galaxy": [],
+                    "Object": [],
+                    "locked": "",
+                    "org_id": "",
+                    "orgc_id": "",
+                    "analysis": "",
+                    "Attribute": [
+                      {
+                        "id": "",
+                        "type": "",
+                        "uuid": "",
+                        "value": "",
+                        "to_ids": "",
+                        "comment": "",
+                        "deleted": "",
+                        "category": "miscellaneous",
+                        "event_id": "",
+                        "object_id": "",
+                        "timestamp": "",
+                        "distribution": "",
+                        "ShadowAttribute": [],
+                        "object_relation": "",
+                        "sharing_group_id": "",
+                        "disable_correlation": ""
+                      }
+                    ],
+                    "published": "",
+                    "timestamp": "",
+                    "RelatedEvent": [],
+                    "distribution": "",
+                    "ShadowAttribute": [],
+                    "attribute_count": "",
+                    "threat_level_id": "",
+                    "sharing_group_id": "",
+                    "publish_timestamp": "",
+                    "disable_correlation": "",
+                    "event_creator_email": "",
+                    "proposal_email_lock": ""
+                  }
+                }
+              },
+              "status": null,
+              "left": "125",
+              "top": "165",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "ea484cb0-fca1-435e-aa13-401bbb98019c"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "55e7d348-030d-4cbe-a36e-9e5e299c2bc8",
+              "name": "Start -> Get Event",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/ea484cb0-fca1-435e-aa13-401bbb98019c",
+              "sourceStep": "/api/3/workflow_steps/e04aeb13-4f31-43d2-af90-526b712b9055"
+            }
+          ],
+          "versions": [],
+          "lastModifyDate": 1599463451,
+          "uuid": "7ff360d4-12c0-4ea0-bff8-4525c425494f",
+          "recordTags": [
+            "MISP"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Add Attributes to  Event",
+          "aliasName": null,
+          "description": "Add attributes in MISP event",
+          "collection": "/api/3/workflow_collections/dede779e-d81b-484b-8d4d-f4894cb548df",
+          "tag": "#MISP",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/730adc41-2e69-4b26-92c2-6ae6b62b9d74",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "9c4fe0df-4119-4004-b9aa-6ee65279c17d",
+                "title": "MISP: Add Attribute to Event",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "125",
+              "top": "30",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "730adc41-2e69-4b26-92c2-6ae6b62b9d74"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Add Attributes to  Event",
+              "description": null,
+              "arguments": {
+                "name": "MISP",
+                "config": "",
+                "params": {
+                  "type": "ip-src",
+                  "value": "192.99.88.112",
+                  "to_ids": false,
+                  "comment": "This is sample event added for unit testing",
+                  "category": "Network activity",
+                  "event_id": 16,
+                  "distribution": "Your Organisation Only"
+                },
+                "version": "2.0.0",
+                "connector": "misp",
+                "operation": "add_attributes_to_event",
+                "operationTitle": "Add Attributes to Event",
+                "step_variables": [],
+                "operationOutput": [
+                  {
+                    "Attribute": {
+                      "id": "",
+                      "type": "",
+                      "uuid": "",
+                      "value": "",
+                      "to_ids": "",
+                      "value1": "",
+                      "comment": "",
+                      "deleted": "",
+                      "category": "",
+                      "event_id": "",
+                      "object_id": "",
+                      "timestamp": "",
+                      "distributi:1on": "",
+                      "object_relation": "",
+                      "sharing_group_id": "",
+                      "disable_correlation": ""
+                    }
+                  }
+                ]
+              },
+              "status": null,
+              "left": "125",
+              "top": "165",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "74221dd2-7eba-45fa-8010-54c6cc978f71"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "3478156f-d911-44d6-bfdd-412abc97f972",
+              "name": "Alerts -> Add Attributes to an Evente",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/74221dd2-7eba-45fa-8010-54c6cc978f71",
+              "sourceStep": "/api/3/workflow_steps/730adc41-2e69-4b26-92c2-6ae6b62b9d74"
+            }
+          ],
+          "versions": [],
+          "lastModifyDate": 1599463314,
+          "uuid": "85d80452-658c-4272-988b-b4d266e228a5",
+          "recordTags": [
+            "MISP"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Remove Tag from Event",
+          "aliasName": null,
+          "description": "Delete information for a specific tag from MISP based on the Event ID you have specified.",
+          "collection": "/api/3/workflow_collections/dede779e-d81b-484b-8d4d-f4894cb548df",
+          "tag": "#MISP",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/2c663656-ee26-4308-a7a0-6b4a9a83878f",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "0de4509d-13e3-4de6-9424-8c11bb1d892a",
+                "title": "MISP: Remove Tag from Event",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "125",
+              "top": "30",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "2c663656-ee26-4308-a7a0-6b4a9a83878f"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Remove Tag from Event",
+              "description": null,
+              "arguments": {
+                "name": "MISP",
+                "config": "",
+                "params": {
+                  "tag": "2",
+                  "event_id": 9
+                },
+                "version": "2.0.0",
+                "connector": "misp",
+                "operation": "remove_tag_from_event",
+                "operationTitle": "Remove Tag from Event",
+                "step_variables": []
+              },
+              "status": null,
+              "left": "125",
+              "top": "165",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "34c3795f-0647-4453-996f-17a1266fe761"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "bd995d1e-9cad-43b1-b6fb-1d747c81997b",
+              "name": "Start -> Remove Tag from Event",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/34c3795f-0647-4453-996f-17a1266fe761",
+              "sourceStep": "/api/3/workflow_steps/2c663656-ee26-4308-a7a0-6b4a9a83878f"
+            }
+          ],
+          "versions": [],
+          "lastModifyDate": 1599463485,
+          "uuid": "aa2f48d2-87e4-4812-a021-7ed6e08e5e2d",
+          "recordTags": [
+            "MISP"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Add Event",
+          "aliasName": null,
+          "description": "Creates an event in MISP",
+          "collection": "/api/3/workflow_collections/dede779e-d81b-484b-8d4d-f4894cb548df",
+          "tag": "#MISP",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/ebf47d43-79be-4bcf-8777-45500d7a1183",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Add Event",
+              "description": null,
+              "arguments": {
+                "name": "MISP",
+                "config": "",
+                "params": {
+                  "url": "http://asksomerset.com/Old/Bossed/",
+                  "date": "",
+                  "info": "Event - Denial of services",
+                  "domain": "facebook.com",
+                  "to_ids": true,
+                  "comment": "This is sample event added for testing",
+                  "dest_ip": "192.168.2.47",
+                  "analysis": "Initial",
+                  "published": "",
+                  "source_ip": "192.168.2.45",
+                  "dest_email": "test@yahoo.com",
+                  "event_info": "Create Event",
+                  "distribution": "Your Organisation Only",
+                  "source_email": "test@yahoo.com",
+                  "threat_level": "High",
+                  "other_attributes": "{\n  \"port\": \"80\"\n}",
+                  "attribute_distribution": "This Community Only"
+                },
+                "version": "2.0.0",
+                "connector": "misp",
+                "operation": "create_event",
+                "operationTitle": "Create Event",
+                "step_variables": [],
+                "operationOutput": {
+                  "Event": {
+                    "id": "",
+                    "Org": {
+                      "id": "",
+                      "name": "",
+                      "uuid": ""
+                    },
+                    "Orgc": {
+                      "id": "",
+                      "name": "",
+                      "uuid": ""
+                    },
+                    "date": "",
+                    "info": "",
+                    "uuid": "",
+                    "Galaxy": [],
+                    "Object": [],
+                    "locked": "",
+                    "org_id": "",
+                    "orgc_id": "",
+                    "analysis": "",
+                    "Attribute": [],
+                    "published": "",
+                    "timestamp": "",
+                    "RelatedEvent": [],
+                    "distribution": "",
+                    "ShadowAttribute": [],
+                    "attribute_count": "",
+                    "threat_level_id": "",
+                    "sharing_group_id": "",
+                    "publish_timestamp": "",
+                    "disable_correlation": "",
+                    "event_creator_email": "",
+                    "proposal_email_lock": ""
+                  }
+                }
+              },
+              "status": null,
+              "left": "125",
+              "top": "165",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "812ef283-4b2e-41e9-8e6d-54ef62a41635"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "edeed0c1-0989-46bd-9f09-1aa92374d0fc",
+                "title": "MISP: Add Event",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "125",
+              "top": "30",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "ebf47d43-79be-4bcf-8777-45500d7a1183"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "bbdcfec9-ee63-4b28-8e7d-b83602061c0c",
+              "name": "Alerts -> Create Event",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/812ef283-4b2e-41e9-8e6d-54ef62a41635",
+              "sourceStep": "/api/3/workflow_steps/ebf47d43-79be-4bcf-8777-45500d7a1183"
+            }
+          ],
+          "versions": [],
+          "lastModifyDate": 1599463336,
+          "uuid": "b049627c-cc06-4641-a3da-a3f4f40f30b0",
+          "recordTags": [
+            "MISP"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete Attribute from Event",
+          "aliasName": null,
+          "description": "Delete attribute from event using attribute ID",
+          "collection": "/api/3/workflow_collections/dede779e-d81b-484b-8d4d-f4894cb548df",
+          "tag": "#MISP",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/f87f8c02-8284-4028-8d41-2806dca9c6f4",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete Attribute from Event",
+              "description": null,
+              "arguments": {
+                "name": "MISP",
+                "config": "",
+                "params": {
+                  "attribute_id": "18"
+                },
+                "version": "2.0.0",
+                "connector": "misp",
+                "operation": "delete_attribute",
+                "operationTitle": "Delete Attribute from Event",
+                "step_variables": [],
+                "operationOutput": {
+                  "message": ""
+                }
+              },
+              "status": null,
+              "left": "125",
+              "top": "165",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "f6083846-a37c-49d5-b6d8-40ac3b318b76"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "cbbb3312-16a5-4799-a71b-353a047035a0",
+                "title": "MISP: Delete Attribute from event",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "125",
+              "top": "30",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "f87f8c02-8284-4028-8d41-2806dca9c6f4"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "bdb252bb-0f63-4e2f-8d34-65160d763aec",
+              "name": "Start -> Delete Attribute",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/f6083846-a37c-49d5-b6d8-40ac3b318b76",
+              "sourceStep": "/api/3/workflow_steps/f87f8c02-8284-4028-8d41-2806dca9c6f4"
+            }
+          ],
+          "versions": [],
+          "lastModifyDate": 1599463389,
+          "uuid": "bc827935-937a-44c3-86ba-029569975e25",
+          "recordTags": [
+            "MISP"
+          ],
+          "isPrivate": false,
+          "owners": []
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "List All Tags",
+          "aliasName": null,
+          "description": "Retrieves all of the tags which was already created in MISP.",
+          "collection": "/api/3/workflow_collections/dede779e-d81b-484b-8d4d-f4894cb548df",
+          "tag": "#MISP",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/242d83b4-a93d-4bf2-8657-f185bf1a4a28",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "List All Tags",
+              "description": null,
+              "arguments": {
+                "name": "MISP",
+                "config": "",
+                "params": [],
+                "version": "2.0.0",
+                "connector": "misp",
+                "operation": "get_tags",
+                "operationTitle": "List All Tags",
+                "step_variables": []
+              },
+              "status": null,
+              "left": "125",
+              "top": "165",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "054c51af-0267-4f06-abdc-59df11215050"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "ce812715-944c-444d-9344-dd3189d78cb9",
+                "title": "MISP: List All Tags",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "left": "125",
+              "top": "30",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "242d83b4-a93d-4bf2-8657-f185bf1a4a28"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "da70d2e2-7b56-4e8c-bb27-75b0c3c5a6de",
+              "name": "Start -> List All Tags",
+              "label": null,
+              "isExecuted": false,
+              "targetStep": "/api/3/workflow_steps/054c51af-0267-4f06-abdc-59df11215050",
+              "sourceStep": "/api/3/workflow_steps/242d83b4-a93d-4bf2-8657-f185bf1a4a28"
+            }
+          ],
+          "versions": [],
+          "lastModifyDate": 1599488307,
+          "uuid": "e21bd670-bf91-4383-b430-796bf2587c61",
+          "recordTags": [
+            "MISP"
+          ],
+          "isPrivate": false,
+          "owners": []
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "MISP"
+  ]
+}
