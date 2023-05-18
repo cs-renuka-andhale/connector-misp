@@ -6,10 +6,15 @@
 
 import json
 import requests
+import arrow
+import logging
 from .constants import *
 from connectors.core.connector import get_logger, ConnectorError
+from requests_toolbelt.utils import dump
 
 logger = get_logger('misp')
+#logger.setLevel(logging.DEBUG) # Uncomment for connector specific debug
+
 
 error_msgs = {
     400: 'Bad/Invalid Request',
@@ -37,7 +42,7 @@ class MISP(object):
             logger.debug("Endpoint URL: {0}".format(url))
             headers = {'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': self.api_key}
             response = requests.request(method, url, headers=headers, data=data, params=params, verify=self.verify)
-            logger.debug("Response: {0}".format(response.text))
+            logger.debug('\n{}\n'.format(dump.dump_all(response).decode('utf-8')))
             if response.ok:
                 logger.info('Successfully got response for url {0}'.format(url))
                 if 'json' in str(response.headers):
@@ -236,15 +241,19 @@ def add_tag(config, params):
 
 def run_search(config, params):
     try:
-        mp = MISP(config)
+        search_type = params.get('search_type')
+        if search_type == 'Advanced':
+            payload = params.get('search_filter')
+        elif search_type == 'Basic':
+            payload = {
+            "page": params.get('page',0),
+            "limit": params.get('limit',10),
+            "searchDatefrom": arrow.get(params.get('searchDatefrom')).format('YYYY-MM-DD'),
+            "searchDateuntil": arrow.get(params.get('searchDateuntil')).format('YYYY-MM-DD')
+            }
         search = params.get('controller')
-        if search == 'Events':
-            url = 'events/restSearch'
-        else:
-            url = 'attributes/restSearch'
-        payload = params.get('filter')
-        if not payload:
-            payload = {}
+        url = 'events/restSearch' if search == 'Events' else 'attributes/restSearch'
+        mp = MISP(config)            
         response = mp.make_rest_call(method='POST', url=url, data=json.dumps(payload))
         return response
     except Exception as err:
