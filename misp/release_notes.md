@@ -1,24 +1,2 @@
 #### What's Improved
-- Rebuilt the MISP connector using the MISP APIs.
-- Added following new operations and playbooks
-  - Add Tag to Event
-  - List All Tags
-  - Remove Tag from Event
-  - Add Tag
-#### What's Fixed 
-- Deprecated the "Add Attributes to Event" and "Delete Attribute" operations and added new operations with the same names using the MISP API.
-- Updated the "Add Event" operation as follows:
-  - Added the "Date" and "Published" parameter.
-  - Removed the "Source IP", "Destination IP", "Domain", "Source Email", "Destination Email", "URL", "Other Attributes", "Use Attribute as an IDS Signature", "Attribute Distribution" and "Comment" parameters.
-- Updated the "Add Attribute to Event" operation as follows:
-  - Added the "Attribute Type" and "Attribute Value" parameters.
-  - Removed the "Source IP", "Destination IP", "Source Email", "Destination Email", "URL" and "Other Attributes" parameters.
-- Update the "Run Search" opertaion as follows:
-  - Added the "Filter" parameter.
-  - Removed the "Maximum Results", "Event IDs", "Tags", "Attribute Type", "Category", "By UUID", "Only Published Events" and "Other Filters" parameters.
-- Updated the Output Schema for following operations: 
-  - Add Attribute to Event
-  - Add Event
-  - Get Event
-  - Delete Event
-  - Run Search
+- Enhanced Run Search action with basic and advanced search options
