@@ -5,7 +5,7 @@
   "publisher": "Fortinet",
   "cs_approved": true,
   "cs_compatible": true,
-  "version": "2.0.0",
+  "version": "2.0.1",
   "category": "Threat Intelligence",
   "help_online": "https://docs.fortinet.com/document/fortisoar/2.0.0/misp/62/misp-v2-0-0",
   "icon_small_name": "misp_small.jpg",
@@ -451,19 +451,83 @@
           "value": "Events"
         },
         {
-          "title": "Filter",
-          "description": "(Optional) Filters based on which you want to search for attributes or events in MISP.\nThis parameter takes the input in the dict format, containing a key and value pair.\nFor example, {“values”:”8.8.8.8”, “not_values”:”google.com” }",
-          "required": false,
+          "title": "Search Type",
+          "name": "search_type",
+          "type": "select",
+          "tooltip": "Select between basic (few parameters) and advanced search (JSON based parameters)",
+          "description": "Select between basic (few parameters) and advanced search (JSON based parameters)",
+          "required": true,
           "editable": true,
           "visible": true,
-          "type": "textarea",
-          "name": "filter"
-        }
+          "options": [
+              "Basic",
+              "Advanced"
+          ],
+          "value": "Basic",
+          "onchange": {
+              "Basic": [
+                  {
+                      "title": "Page",
+                      "required": false,
+                      "editable": true,
+                      "visible": true,
+                      "type": "integer",
+                      "name": "page",
+                      "description": "Page number to fetch",
+                      "tooltip": "Page number to fetch",
+                      "value": 0
+                  },
+                  {
+                      "title": "Limit",
+                      "required": false,
+                      "editable": true,
+                      "visible": true,
+                      "type": "integer",
+                      "name": "limit",
+                      "description": "Limit the number of records to fetch",
+                      "tooltip": "Limit the number of records to fetch",
+                      "value": 1
+                  },
+                  {
+                      "title": "Search From",
+                      "description": "Search for events after this date.",
+                      "required": true,
+                      "editable": true,
+                      "visible": true,
+                      "type": "datetime",
+                      "name": "searchDatefrom",
+                      "value": ""
+                  },
+                  {
+                      "title": "Search Until",
+                      "description": "Search for events until this date.",
+                      "required": true,
+                      "editable": true,
+                      "visible": true,
+                      "type": "datetime",
+                      "name": "searchDateuntil",
+                      "value": ""
+                  }
+              ],
+              "Advanced": [
+                {
+                  "title": "Search Filter",
+                  "required": true,
+                  "description": "Search filter as documented at https://www.misp-project.org/openapi/#tag/Events/operation/searchEvents",
+                  "editable": true,
+                  "visible": true,
+                  "type": "json",
+                  "name": "search_filter",
+                  "placeholder": "{\"page\": 0,  \"limit\": 1,  \"searchDatefrom\": \"2020-01-20\",  \"searchDateuntil\": \"2020-01-20\"}"
+                }
+              ]
+          }
+      }
       ],
       "enabled": true,
       "conditional_output_schema": [
         {
-          "condition": "{{controller === Events}}",
+          "condition": "{{controller === 'Events'}}",
           "output_schema": {
             "response": [
               {
@@ -511,7 +575,7 @@
           }
         },
         {
-          "condition": "{{controller === Attributes}}",
+          "condition": "{{controller === 'Attributes'}}",
           "output_schema": {
             "response": {
               "Attribute": [
