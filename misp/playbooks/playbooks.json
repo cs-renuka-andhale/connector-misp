@@ -3,7 +3,7 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - MISP - 2.0.0",
+      "name": "Sample - MISP - 2.0.1",
       "description": "Sample playbooks for \"MISP\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": "/api/3/images/80a5beb8-c433-467e-bab1-6525080a1e10",
@@ -39,7 +39,7 @@
                   "hide_tag": false,
                   "exportable": false
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "misp",
                 "operation": "add_tag",
                 "operationTitle": "Add Tag",
@@ -129,18 +129,9 @@
                 "name": "MISP",
                 "config": "",
                 "params": {
-                  "tags": "",
-                  "other": "{\n  \"values\": \"8.8.8.3\"\n}",
-                  "filter": "{\n    \"returnFormat\": \"json\",\n    \"type\": {\n        \"OR\": [\n            \"ip-src\",\n            \"ip-dst\"\n        ]\n    }\n}",
-                  "by_uuid": "5a54a0c1-6a5c-4c46-8d11-0437c0a83281",
-                  "category": "Network activity",
-                  "event_ids": "59",
-                  "published": true,
-                  "controller": "Events",
-                  "max_results": 12,
-                  "attribute_type": "ip-src"
+                  "controller": "Events"
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "misp",
                 "operation": "run_search",
                 "operationTitle": "Run Search",
@@ -233,7 +224,7 @@
                 "params": {
                   "event_id": 10
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "misp",
                 "operation": "delete_event",
                 "operationTitle": "Delete Event",
@@ -365,7 +356,7 @@
                   "tag": "2",
                   "event_id": 9
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "misp",
                 "operation": "add_tag_to_event",
                 "operationTitle": "Add Tag to Event",
@@ -457,7 +448,7 @@
                 "params": {
                   "event_id": 10
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "misp",
                 "operation": "get_event",
                 "operationTitle": "Get Event",
@@ -603,7 +594,7 @@
                   "event_id": 16,
                   "distribution": "Your Organisation Only"
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "misp",
                 "operation": "add_attributes_to_event",
                 "operationTitle": "Add Attributes to Event",
@@ -718,7 +709,7 @@
                   "tag": "2",
                   "event_id": 9
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "misp",
                 "operation": "remove_tag_from_event",
                 "operationTitle": "Remove Tag from Event",
@@ -792,7 +783,7 @@
                   "other_attributes": "{\n  \"port\": \"80\"\n}",
                   "attribute_distribution": "This Community Only"
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "misp",
                 "operation": "create_event",
                 "operationTitle": "Create Event",
@@ -921,7 +912,7 @@
                 "params": {
                   "attribute_id": "18"
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "misp",
                 "operation": "delete_attribute",
                 "operationTitle": "Delete Attribute from Event",
@@ -1014,7 +1005,7 @@
                 "name": "MISP",
                 "config": "",
                 "params": [],
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "misp",
                 "operation": "get_tags",
                 "operationTitle": "List All Tags",
