@@ -7,13 +7,11 @@
 import json
 import requests
 import arrow
-import logging
 from .constants import *
 from connectors.core.connector import get_logger, ConnectorError
 from requests_toolbelt.utils import dump
 
 logger = get_logger('misp')
-#logger.setLevel(logging.DEBUG) # Uncomment for connector specific debug
 
 
 error_msgs = {
@@ -241,19 +239,23 @@ def add_tag(config, params):
 
 def run_search(config, params):
     try:
+        mp = MISP(config)
         search_type = params.get('search_type')
         if search_type == 'Advanced':
             payload = params.get('search_filter')
         elif search_type == 'Basic':
+            searchDatefrom = params.get('from')
+            searchDateuntil = params.get('to')
             payload = {
-            "page": params.get('page',0),
-            "limit": params.get('limit',10),
-            "searchDatefrom": arrow.get(params.get('searchDatefrom')).format('YYYY-MM-DD'),
-            "searchDateuntil": arrow.get(params.get('searchDateuntil')).format('YYYY-MM-DD')
+                "page": params.get('page'),
+                "limit": params.get('limit'),
+                "from": arrow.get(searchDatefrom).format('YYYY-MM-DD') if searchDatefrom else None,
+                "to": arrow.get(searchDateuntil).format('YYYY-MM-DD') if searchDateuntil else None,
+                "type": params.get('type', ''),
             }
+        payload = mp.build_payload(payload)
         search = params.get('controller')
         url = 'events/restSearch' if search == 'Events' else 'attributes/restSearch'
-        mp = MISP(config)            
         response = mp.make_rest_call(method='POST', url=url, data=json.dumps(payload))
         return response
     except Exception as err:
