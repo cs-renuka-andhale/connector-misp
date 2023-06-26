@@ -1,5 +1,5 @@
 """ Copyright start
-  Copyright (C) 2008 - 2020 Fortinet Inc.
+  Copyright (C) 2008 - 2023 Fortinet Inc.
   All rights reserved.
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
@@ -68,9 +68,14 @@ class MISP(object):
             raise ConnectorError(str(err))
 
     def build_payload(self, payload):
-        payload = {k: v for k, v in payload.items() if v is not None and v != ''}
+        data = {}
+        for k, v in payload.items():
+            if v and (k == 'page' and v < 0) or (k == 'limit' and v <= 0):
+                raise ConnectorError('Value {0} of {1} parameter is invalid.'.format(v, k))
+            elif v:
+                data[k] = v
         logger.debug("Query Parameters: {0}".format(payload))
-        return payload
+        return data
 
 
 def create_event(config, params):
@@ -241,21 +246,24 @@ def run_search(config, params):
     try:
         mp = MISP(config)
         search_type = params.get('search_type')
+        controller = params.get('controller')
         if search_type == 'Advanced':
             payload = params.get('search_filter')
         elif search_type == 'Basic':
             searchDatefrom = params.get('from')
             searchDateuntil = params.get('to')
             payload = {
-                "page": params.get('page'),
-                "limit": params.get('limit'),
-                "from": arrow.get(searchDatefrom).format('YYYY-MM-DD') if searchDatefrom else None,
-                "to": arrow.get(searchDateuntil).format('YYYY-MM-DD') if searchDateuntil else None,
+                "page": params.get('page', 0),
+                "limit": params.get('limit', 10),
+                "from":  handle_date(searchDatefrom, controller),
+                "to": handle_date(searchDateuntil, controller),
                 "type": params.get('type', ''),
             }
         payload = mp.build_payload(payload)
-        search = params.get('controller')
-        url = 'events/restSearch' if search == 'Events' else 'attributes/restSearch'
+        if controller == 'Events':
+            url = 'events/restSearch'
+        else:
+            url = 'attributes/restSearch'
         response = mp.make_rest_call(method='POST', url=url, data=json.dumps(payload))
         return response
     except Exception as err:
@@ -268,6 +276,17 @@ def get_attribute_type(config, params):
     if category:
         type = attribute_type.get(category)
         return type
+
+
+def handle_date(date, controller):
+    if date and controller == 'Events':
+        return arrow.get(date).format('YYYY-MM-DD')
+    elif date:
+        if type(date) is not str:
+            return date
+        return arrow.get(date).timestamp()
+    else:
+        return None
 
 
 def _check_health(config):

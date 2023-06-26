@@ -14,7 +14,8 @@
     "fields": [
       {
         "title": "Server Name",
-        "description": "Hostname or IP address of the MISP server to which you will connect and perform automated operations.",
+        "description": "Specify Hostname or IP address of the MISP server to which you will connect and perform automated operations.",
+        "tooltip": "Specify Hostname or IP address of the MISP server to which you will connect and perform automated operations.",
         "required": true,
         "editable": true,
         "visible": true,
@@ -23,7 +24,8 @@
       },
       {
         "title": "API Key",
-        "description": "API key that is configured for your account for using the MISP server.",
+        "description": "Specify API key that is configured for your account for using the MISP server.",
+        "tooltip": "Specify API key that is configured for your account for using the MISP server.",
         "required": true,
         "editable": true,
         "visible": true,
@@ -33,6 +35,7 @@
       {
         "title": "Verify SSL",
         "description": "Specifies whether the SSL certificate for the server is to be verified or not.\nBy default, this option is set as True.",
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not.\nBy default, this option is set as True.",
         "required": false,
         "editable": true,
         "visible": true,
@@ -52,28 +55,28 @@
       "parameters": [
         {
           "title": "Event Information",
-          "description": "Brief description of the malware or event you are creating, including the internal reference for the event.\nYou can add a detailed description of the event by adding attributes to the event after the event is created.",
+          "description": "Specify brief description of the malware or event you are creating, including the internal reference for the event.\nYou can add a detailed description of the event by adding attributes to the event after the event is created.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "event_info",
-          "tooltip": "Specify brief description for the event"
+          "tooltip": "Specify brief description of the malware or event you are creating, including the internal reference for the event."
         },
         {
           "title": "Date",
           "name": "date",
-          "description": "(Optional) Date on which you want to create the event in MISP. The date must be in the yyyy/mm/dd format.",
+          "description": "(Optional) Specify date on which you want to create the event in MISP.",
           "type": "datetime",
           "visible": true,
           "editable": true,
           "required": false,
-          "tooltip": "Date should be year, month and day format",
-          "placeholder": "e.g. 2020-08-11"
+          "tooltip": "Specify date on which you want to create the event in MISP."
         },
         {
           "title": "Distribution",
           "description": "(Optional) Setting that controls on who can view this event once it is published and eventually when it gets pulled. Apart from being able to set which users on this server are allowed to see the event, this also controls whether or not the event will be synchronized to other servers.\nYou can choose between Your organization only, This community only, Connected communities, or All communities.",
+          "tooltip": "Specify setting that controls on who can view this event once it is published and eventually when it gets pulled. Apart from being able to set which users on this server are allowed to see the event, this also controls whether or not the event will be synchronized to other servers.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -90,6 +93,7 @@
         {
           "title": "Threat Level",
           "description": "(Optional) Indicates the risk level of the event.\nYou can categorize events into different threat categories, which are Low, Medium, or High. You can also alternatively leave this field as Undefined.",
+          "tooltip": "Select the risk level of the event.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -105,7 +109,8 @@
         },
         {
           "title": "Analysis Status",
-          "description": "(Optional) Indicates the current stage of analysis of the event.\nYou can choose between Initial, Ongoing, or Completed.",
+          "description": "(Optional) Specify the current stage of analysis of the event.\nYou can choose between Initial, Ongoing, or Completed.",
+          "tooltip": "Specify the current stage of analysis of the event.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -127,7 +132,7 @@
           "type": "checkbox",
           "name": "published",
           "value": false,
-          "tooltip": "Check to publish the event in MISP"
+          "tooltip": "Select this checkbox to publish the event in MISP"
         }
       ],
       "enabled": true,
@@ -181,11 +186,13 @@
       "parameters": [
         {
           "title": "Event ID",
-          "description": "ID of the event whose information you want to retrieve from MISP.",
+          "description": "Specify ID or UUID of the event whose information you want to retrieve from MISP. You can get ID or UUID of event using Run Search action.",
+          "tooltip": "Specify ID or UUID of the event whose information you want to retrieve from MISP. You can get ID or UUID of event using Run Search action.",
+          "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
           "required": true,
           "editable": true,
           "visible": true,
-          "type": "integer",
+          "type": "text",
           "name": "event_id"
         }
       ],
@@ -210,7 +217,25 @@
           "sharing_group_id": "",
           "disable_correlation": "",
           "extends_uuid": "",
-          "event_creator_email": "",
+          "CryptographicKey": [],
+          "EventReport": [],
+          "protected": "",
+          "RelatedEvent": [],
+          "Tag": [
+            {
+              "colour": "",
+              "exportable": "",
+              "hide_tag": "",
+              "id": "",
+              "is_custom_galaxy": "",
+              "is_galaxy": "",
+              "local": "",
+              "local_only": "",
+              "name": "",
+              "numerical_value": "",
+              "user_id": ""
+            }
+          ],
           "Org": {
             "id": "",
             "name": "",
@@ -247,7 +272,33 @@
             }
           ],
           "ShadowAttribute": [],
-          "RelatedEvent": [],
+          "RelatedEvent": [
+            {
+              "Event": {
+                "id": "",
+                "date": "",
+                "threat_level_id": "3",
+                "info": "",
+                "published": "",
+                "uuid": "",
+                "analysis": "",
+                "timestamp": "",
+                "distribution": "",
+                "org_id": "",
+                "orgc_id": "",
+                "Org": {
+                  "id": "",
+                  "name": "",
+                  "uuid": ""
+                },
+                "Orgc": {
+                  "id": "",
+                  "name": "",
+                  "uuid": ""
+                }
+              }
+            }
+          ],
           "Galaxy": [],
           "Object": []
         }
@@ -262,7 +313,9 @@
       "parameters": [
         {
           "title": "Event ID",
-          "description": "ID of the MISP event to which you want to add attributes.",
+          "description": "Specify ID or UUID of the MISP event to which you want to add attributes. You can get ID or UUID of event using Run Search action.",
+          "tooltip": "Specify ID or UUID of the MISP event to which you want to add attributes. You can get ID or UUID of event using Run Search action.",
+          "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
           "required": true,
           "editable": true,
           "visible": true,
@@ -271,7 +324,8 @@
         },
         {
           "title": "Category",
-          "description": "Category of the attribute that you want to add to the specific event in MISP. You can choose from options such as Internal reference, Network activity, Financial fraud, etc.",
+          "description": "Specify category of the attribute that you want to add to the specific event in MISP. You can choose from options such as Internal reference, Targeting data, Antivirus detection, Payload delivery, Artifacts dropped, Payload installation, Persistence mechanism, Network activity, Payload type, Attribution, External analysis, Financial fraud, Support Tool, Social network, Person, Other.\nNote:Options of Attribute Type parameter will be based on this parameter.",
+          "tooltip": "Specify category of the attribute that you want to add to the specific event in MISP. Options of Attribute Type parameter will be based on this parameter.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -298,28 +352,29 @@
         },
         {
           "title": "Attribute Type",
-          "description": "Type of attribute that you want to add to the specific event in MISP.",
+          "description": "Specify the type of attribute that you want to add to the specific event in MISP.",
+          "tooltip": "Choose Category parameter first. Specify the type of attribute that you want to add to the specific event in MISP.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "select",
           "name": "type",
-          "apiOperation": "get_attribute_type",
-          "tooltip": "Choose first category parameter."
+          "apiOperation": "get_attribute_type"
         },
         {
           "title": "Attribute Value",
-          "description": "Value of the attribute that you want to add to the specific event in MISP.",
+          "description": "Specify the value of the attribute that you want to add to the specific event in MISP. Attribute value could be IP address, Port no, Email address, URL etc.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "value",
-          "tooltip": "Attribute value should be IP address, Port no, Email address, URL etc."
+          "tooltip": "Specify the value of the attribute that you want to add to the specific event in MISP. Attribute value could be IP address, Port no, Email address, URL etc."
         },
         {
           "title": "Attribute Distribution",
-          "description": "(Optional)Setting controls on who can view this attribute once it is published. By default, \"Inherit Event\" is set, which means that this field inherits the distribution that is set on its parent event.\nYou can choose between Your organization only, This community only, Connected communities, or All communities or Inherit Event.",
+          "description": "(Optional) Specify the setting controls on who can view this attribute once it is published. By default, \"Inherit Event\" is set, which means that this field inherits the distribution that is set on its parent event.\nYou can choose between Your organization only, This community only, Connected communities, or All communities or Inherit Event.",
+          "tooltip": "Specify the setting controls on who can view this attribute once it is published. By default, \"Inherit Event\" is set, which means that this field inherits the distribution that is set on its parent event.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -337,6 +392,7 @@
         {
           "title": "Use Attribute as an IDS Signature",
           "description": "Select this checkbox if you want to add attributes for Intrusion Detection System (IDS) and this sets the to_IDS flag to True in MISP.",
+          "tooltip": "Select this checkbox if you want to add attributes for Intrusion Detection System (IDS) and this sets the to_IDS flag to True in MISP.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -346,7 +402,8 @@
         },
         {
           "title": "Comment",
-          "description": "(Optional) Comments that you want to add for the attributes. Comments are used for informational purposes only and not for correlations.",
+          "description": "(Optional) Specify Comments that you want to add for the attributes. Comments are used for informational purposes only and not for correlations.",
+          "tooltip": "Specify Comments that you want to add for the attributes. Comments are used for informational purposes only and not for correlations.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -383,17 +440,19 @@
     {
       "operation": "delete_event",
       "title": "Delete Event",
-      "category": "miscellaneous",
+      "category": "investigation",
       "annotation": "delete_event",
       "description": "Deletes an event from MISP based on the event ID that you have specified.",
       "parameters": [
         {
           "title": "Event ID",
-          "description": "ID of the event that you want to delete from MISP.",
+          "description": "Specify ID or UUID of the event that you want to delete from MISP.  You can get ID or UUID of event using Run Search action.",
+          "tooltip": "Specify ID or UUID of the event that you want to delete from MISP.  You can get ID or UUID of event using Run Search action.",
+          "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
           "required": true,
           "editable": true,
           "visible": true,
-          "type": "integer",
+          "type": "text",
           "name": "event_id"
         }
       ],
@@ -415,13 +474,14 @@
       "parameters": [
         {
           "title": "Attribute ID",
-          "description": "ID of the attribute that you want to delete from MISP.",
+          "description": "Specify ID or UUID of the attribute that you want to delete from MISP. You can get attribute ID or UUID using Run Search Action.",
+          "tooltip": "Specify ID or UUID of the attribute that you want to delete from MISP. You can get attribute ID or UUID using Run Search Action.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
           "name": "attribute_id",
-          "value": ""
+          "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44"
         }
       ],
       "enabled": true,
@@ -470,6 +530,7 @@
               {
                 "title": "Search From",
                 "description": "Specify the date to retrieve events after this date.",
+                "tooltip": "Specify the date to retrieve events after this date.",
                 "required": false,
                 "editable": true,
                 "visible": true,
@@ -480,6 +541,7 @@
               {
                 "title": "Search Until",
                 "description": "Specify the date to retrieve events before this date.",
+                "tooltip": "Specify the date to retrieve events before this date.",
                 "required": false,
                 "editable": true,
                 "visible": true,
@@ -564,7 +626,25 @@
                   "sharing_group_id": "",
                   "disable_correlation": "",
                   "extends_uuid": "",
-                  "event_creator_email": "",
+                  "CryptographicKey": [],
+                  "EventReport": [],
+                  "protected": "",
+                  "RelatedEvent": [],
+                  "Tag": [
+                    {
+                      "colour": "",
+                      "exportable": "",
+                      "hide_tag": "",
+                      "id": "",
+                      "is_custom_galaxy": "",
+                      "is_galaxy": "",
+                      "local": "",
+                      "local_only": "",
+                      "name": "",
+                      "numerical_value": "",
+                      "user_id": ""
+                    }
+                  ],
                   "Org": {
                     "id": "",
                     "name": "",
@@ -578,55 +658,55 @@
                     "local": ""
                   },
                   "Attribute": [
-                     {
-                            "id": "",
-                            "type": "",
-                            "category": "",
-                            "to_ids": "",
-                            "uuid": "",
-                            "event_id": "",
-                            "distribution": "",
-                            "timestamp": "",
-                            "comment": "",
-                            "sharing_group_id": "",
-                            "deleted": "",
-                            "disable_correlation": "",
-                            "object_id": "",
-                            "object_relation": "",
-                            "first_seen": "",
-                            "last_seen": "",
-                            "value": "",
-                            "Galaxy": [],
-                            "ShadowAttribute": []
-                        }
+                    {
+                      "id": "",
+                      "type": "",
+                      "category": "",
+                      "to_ids": "",
+                      "uuid": "",
+                      "event_id": "",
+                      "distribution": "",
+                      "timestamp": "",
+                      "comment": "",
+                      "sharing_group_id": "",
+                      "deleted": "",
+                      "disable_correlation": "",
+                      "object_id": "",
+                      "object_relation": "",
+                      "first_seen": "",
+                      "last_seen": "",
+                      "value": "",
+                      "Galaxy": [],
+                      "ShadowAttribute": []
+                    }
                   ],
                   "ShadowAttribute": [],
                   "RelatedEvent": [
                     {
-                            "Event": {
-                                "id": "",
-                                "date": "",
-                                "threat_level_id": "3",
-                                "info": "",
-                                "published": "",
-                                "uuid": "",
-                                "analysis": "",
-                                "timestamp": "",
-                                "distribution": "",
-                                "org_id": "",
-                                "orgc_id": "",
-                                "Org": {
-                                    "id": "",
-                                    "name": "",
-                                    "uuid": ""
-                                },
-                                "Orgc": {
-                                    "id": "",
-                                    "name": "",
-                                    "uuid": ""
-                                }
-                            }
+                      "Event": {
+                        "id": "",
+                        "date": "",
+                        "threat_level_id": "3",
+                        "info": "",
+                        "published": "",
+                        "uuid": "",
+                        "analysis": "",
+                        "timestamp": "",
+                        "distribution": "",
+                        "org_id": "",
+                        "orgc_id": "",
+                        "Org": {
+                          "id": "",
+                          "name": "",
+                          "uuid": ""
+                        },
+                        "Orgc": {
+                          "id": "",
+                          "name": "",
+                          "uuid": ""
                         }
+                      }
+                    }
                   ],
                   "Galaxy": [],
                   "Object": []
@@ -682,7 +762,8 @@
       "parameters": [
         {
           "title": "Tag Name",
-          "description": "Name of the tag you want to create tag in MISP.",
+          "description": "Specify name of the tag you want to create in MISP.",
+          "tooltip": "Specify name of the tag you want to create in MISP.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -698,7 +779,7 @@
           "type": "checkbox",
           "name": "exportable",
           "value": false,
-          "tooltip": "Check for the exportable tag in MISP"
+          "tooltip": "Select this checkbox if you want to create an exportable tag in MISP."
         },
         {
           "title": "Hide Tag",
@@ -709,11 +790,12 @@
           "type": "checkbox",
           "name": "hide_tag",
           "value": false,
-          "tooltip": "Check to hide the tag in MISP"
+          "tooltip": "Select this checkbox if you want to hide the created tag in MISP."
         },
         {
           "title": "Organisation ID",
-          "description": "ID of the organization that you want to add to the tag that you are creating in MISP.",
+          "description": "Specify ID of the organization that you want to add to the tag that you are creating in MISP.",
+          "tooltip": "Specify ID of the organization that you want to add to the tag that you are creating in MISP.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -723,7 +805,8 @@
         },
         {
           "title": "User ID",
-          "description": "ID of the user that you want to add to the tag that you are creating in MISP.",
+          "description": "Specify ID of the user that you want to add to the tag that you are creating in MISP.",
+          "tooltip": "Specify ID of the user that you want to add to the tag that you are creating in MISP.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -735,14 +818,17 @@
       "enabled": true,
       "output_schema": {
         "Tag": {
-          "id": "",
-          "name": "",
           "colour": "",
           "exportable": "",
-          "org_id": "",
-          "user_id": "",
           "hide_tag": "",
-          "numerical_value": ""
+          "id": "",
+          "is_custom_galaxy": "",
+          "is_galaxy": "",
+          "local_only": "",
+          "name": "",
+          "numerical_value": "",
+          "org_id": "",
+          "user_id": ""
         }
       }
     },
@@ -758,17 +844,20 @@
       "output_schema": {
         "Tag": [
           {
-            "id": "",
-            "name": "",
-            "colour": "",
-            "exportable": "",
-            "org_id": "",
-            "user_id": "",
-            "hide_tag": "",
-            "numerical_value": "",
-            "count": "",
             "attribute_count": "",
-            "favourite": ""
+            "colour": "",
+            "count": "",
+            "exportable": "",
+            "favourite": "",
+            "hide_tag": "",
+            "id": "",
+            "is_custom_galaxy": "",
+            "is_galaxy": "",
+            "local_only": "",
+            "name": "",
+            "numerical_value": "",
+            "org_id": "",
+            "user_id": ""
           }
         ]
       }
@@ -782,7 +871,9 @@
       "parameters": [
         {
           "title": "Event ID",
-          "description": "ID of the MISP event to which you want to add the specified tag.",
+          "description": "Specify ID or UUID of the MISP event to which you want to add the specified tag.",
+          "tooltip": "Specify ID or UUID of the MISP event to which you want to add the specified tag.",
+          "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
           "required": true,
           "editable": true,
           "visible": true,
@@ -791,13 +882,13 @@
         },
         {
           "title": "Tag",
-          "description": "Tag that you want to add to the specified event in MISP.",
+          "description": "Specify ID or name of the tag that you want to add to the specified event in MISP.",
+          "tooltip": "Specify ID or name of the tag that you want to add to the specified event in MISP.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "tag",
-          "tooltip": "Tag should be tag ID or Name"
+          "name": "tag"
         }
       ],
       "enabled": true,
@@ -816,7 +907,9 @@
       "parameters": [
         {
           "title": "Event ID",
-          "description": "ID of the MISP event from which you want to remove the specified tag.",
+          "description": "Specify ID or UUID of the MISP event from which you want to remove the specified tag.",
+          "tooltip": "Specify ID or UUID of the MISP event from which you want to remove the specified tag.",
+          "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
           "required": true,
           "editable": true,
           "visible": true,
@@ -825,13 +918,13 @@
         },
         {
           "title": "Tag",
-          "description": "Tag that you want to remove from the specified event in MISP.",
+          "description": "Specify ID or name of the tag that you want to remove to the specified event in MISP.",
+          "tooltip": "Specify ID or name of the tag that you want to remove to the specified event in MISP.",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "name": "tag",
-          "tooltip": "Tag should be tag ID or Name"
+          "name": "tag"
         }
       ],
       "enabled": true,
@@ -851,8 +944,7 @@
       ],
       "enabled": true,
       "visible": false,
-      "output_schema": {
-      }
+      "output_schema": []
     }
   ]
 }

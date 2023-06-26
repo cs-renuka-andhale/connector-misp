@@ -129,7 +129,8 @@
                 "name": "MISP",
                 "config": "",
                 "params": {
-                  "controller": "Events"
+                  "controller": "Events",
+                  "search_type": "Basic"
                 },
                 "version": "2.0.1",
                 "connector": "misp",
