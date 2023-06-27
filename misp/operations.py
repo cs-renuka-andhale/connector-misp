@@ -246,24 +246,21 @@ def run_search(config, params):
     try:
         mp = MISP(config)
         search_type = params.get('search_type')
-        controller = params.get('controller')
         if search_type == 'Advanced':
             payload = params.get('search_filter')
         elif search_type == 'Basic':
             searchDatefrom = params.get('from')
             searchDateuntil = params.get('to')
             payload = {
-                "page": params.get('page', 0),
-                "limit": params.get('limit', 10),
-                "from":  handle_date(searchDatefrom, controller),
-                "to": handle_date(searchDateuntil, controller),
+                "page": params.get('page'),
+                "limit": params.get('limit'),
+                "from": arrow.get(searchDatefrom).format('YYYY-MM-DD') if searchDatefrom else None,
+                "to": arrow.get(searchDateuntil).format('YYYY-MM-DD') if searchDateuntil else None,
                 "type": params.get('type', ''),
             }
         payload = mp.build_payload(payload)
-        if controller == 'Events':
-            url = 'events/restSearch'
-        else:
-            url = 'attributes/restSearch'
+        search = params.get('controller')
+        url = 'events/restSearch' if search == 'Events' else 'attributes/restSearch'
         response = mp.make_rest_call(method='POST', url=url, data=json.dumps(payload))
         return response
     except Exception as err:
@@ -276,17 +273,6 @@ def get_attribute_type(config, params):
     if category:
         type = attribute_type.get(category)
         return type
-
-
-def handle_date(date, controller):
-    if date and controller == 'Events':
-        return arrow.get(date).format('YYYY-MM-DD')
-    elif date:
-        if type(date) is not str:
-            return date
-        return arrow.get(date).timestamp()
-    else:
-        return None
 
 
 def _check_health(config):

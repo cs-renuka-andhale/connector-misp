@@ -319,7 +319,7 @@
           "required": true,
           "editable": true,
           "visible": true,
-          "type": "integer",
+          "type": "text",
           "name": "event_id"
         },
         {
@@ -877,7 +877,7 @@
           "required": true,
           "editable": true,
           "visible": true,
-          "type": "integer",
+          "type": "text",
           "name": "event_id"
         },
         {
@@ -913,7 +913,7 @@
           "required": true,
           "editable": true,
           "visible": true,
-          "type": "integer",
+          "type": "text",
           "name": "event_id"
         },
         {
