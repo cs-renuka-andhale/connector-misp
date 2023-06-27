@@ -1,3 +1,9 @@
+""" Copyright start
+  Copyright (C) 2008 - 2023 Fortinet Inc.
+  All rights reserved.
+  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
+  Copyright end """
+
 distrib_mapping = {'Your Organisation Only': 0,
                    'This Community Only': 1,
                    'Connected Communities': 2,

@@ -8,7 +8,10 @@
       "visible": true,
       "image": "/api/3/images/80a5beb8-c433-467e-bab1-6525080a1e10",
       "uuid": "dede779e-d81b-484b-8d4d-f4894cb548df",
-      "recordTags": [],
+      "recordTags": [
+        "MISP",
+        "misp"
+      ],
       "workflows": [
         {
           "@type": "Workflow",
@@ -101,7 +104,8 @@
           "lastModifyDate": 1601962150,
           "uuid": "303599d0-4b36-4aa3-9cc0-88824526e65a",
           "recordTags": [
-            "MISP"
+            "MISP",
+            "misp"
           ],
           "isPrivate": false,
           "owners": []
@@ -129,7 +133,8 @@
                 "name": "MISP",
                 "config": "",
                 "params": {
-                  "controller": "Events"
+                  "controller": "Events",
+                  "search_type": "Basic"
                 },
                 "version": "2.0.1",
                 "connector": "misp",
@@ -194,7 +199,8 @@
           "lastModifyDate": 1599463510,
           "uuid": "3d88125d-3103-4c68-adae-ea2d56d8b70a",
           "recordTags": [
-            "MISP"
+            "MISP",
+            "misp"
           ],
           "isPrivate": false,
           "owners": []
@@ -291,7 +297,8 @@
           "lastModifyDate": 1599463431,
           "uuid": "4e290ff3-2d5a-440e-9c9a-0ab9bf8697a9",
           "recordTags": [
-            "MISP"
+            "MISP",
+            "misp"
           ],
           "isPrivate": false,
           "owners": []
@@ -384,7 +391,8 @@
           "lastModifyDate": 1599463363,
           "uuid": "6cbf0407-f75f-4beb-a3f6-991a08c0215d",
           "recordTags": [
-            "MISP"
+            "MISP",
+            "misp"
           ],
           "isPrivate": false,
           "owners": []
@@ -524,7 +532,8 @@
           "lastModifyDate": 1599463451,
           "uuid": "7ff360d4-12c0-4ea0-bff8-4525c425494f",
           "recordTags": [
-            "MISP"
+            "MISP",
+            "misp"
           ],
           "isPrivate": false,
           "owners": []
@@ -644,7 +653,8 @@
           "lastModifyDate": 1599463314,
           "uuid": "85d80452-658c-4272-988b-b4d266e228a5",
           "recordTags": [
-            "MISP"
+            "MISP",
+            "misp"
           ],
           "isPrivate": false,
           "owners": []
@@ -737,7 +747,8 @@
           "lastModifyDate": 1599463485,
           "uuid": "aa2f48d2-87e4-4812-a021-7ed6e08e5e2d",
           "recordTags": [
-            "MISP"
+            "MISP",
+            "misp"
           ],
           "isPrivate": false,
           "owners": []
@@ -882,7 +893,8 @@
           "lastModifyDate": 1599463336,
           "uuid": "b049627c-cc06-4641-a3da-a3f4f40f30b0",
           "recordTags": [
-            "MISP"
+            "MISP",
+            "misp"
           ],
           "isPrivate": false,
           "owners": []
@@ -977,7 +989,8 @@
           "lastModifyDate": 1599463389,
           "uuid": "bc827935-937a-44c3-86ba-029569975e25",
           "recordTags": [
-            "MISP"
+            "MISP",
+            "misp"
           ],
           "isPrivate": false,
           "owners": []
@@ -1067,7 +1080,8 @@
           "lastModifyDate": 1599488307,
           "uuid": "e21bd670-bf91-4383-b430-796bf2587c61",
           "recordTags": [
-            "MISP"
+            "MISP",
+            "misp"
           ],
           "isPrivate": false,
           "owners": []
@@ -1076,6 +1090,7 @@
     }
   ],
   "exported_tags": [
-    "MISP"
+    "MISP",
+    "misp"
   ]
 }

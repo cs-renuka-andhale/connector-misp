@@ -1,5 +1,5 @@
 """ Copyright start
-  Copyright (C) 2008 - 2020 Fortinet Inc.
+  Copyright (C) 2008 - 2023 Fortinet Inc.
   All rights reserved.
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
@@ -68,9 +68,14 @@ class MISP(object):
             raise ConnectorError(str(err))
 
     def build_payload(self, payload):
-        payload = {k: v for k, v in payload.items() if v is not None and v != ''}
+        data = {}
+        for k, v in payload.items():
+            if v and (k == 'page' and v < 0) or (k == 'limit' and v <= 0):
+                raise ConnectorError('Value {0} of {1} parameter is invalid.'.format(v, k))
+            elif v:
+                data[k] = v
         logger.debug("Query Parameters: {0}".format(payload))
-        return payload
+        return data
 
 
 def create_event(config, params):
