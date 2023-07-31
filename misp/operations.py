@@ -70,8 +70,10 @@ class MISP(object):
     def build_payload(self, payload):
         data = {}
         for k, v in payload.items():
-            if v and (k == 'page' and v < 0) or (k == 'limit' and v <= 0):
+            if v and ((k == 'page' and v < 0) or (k == 'limit' and v <= 0)):
                 raise ConnectorError('Value {0} of {1} parameter is invalid.'.format(v, k))
+            elif type(v) is bool:
+                data[k] = v
             elif v:
                 data[k] = v
         logger.debug("Query Parameters: {0}".format(payload))
@@ -252,11 +254,11 @@ def run_search(config, params):
             searchDatefrom = params.get('from')
             searchDateuntil = params.get('to')
             payload = {
-                "page": params.get('page'),
-                "limit": params.get('limit'),
+                "page": params.get('page', 1),
+                "limit": params.get('limit', 10),
                 "from": arrow.get(searchDatefrom).format('YYYY-MM-DD') if searchDatefrom else None,
                 "to": arrow.get(searchDateuntil).format('YYYY-MM-DD') if searchDateuntil else None,
-                "type": params.get('type', ''),
+                "type": params.get('type', '')
             }
         payload = mp.build_payload(payload)
         search = params.get('controller')
