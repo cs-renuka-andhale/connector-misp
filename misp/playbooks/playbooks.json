@@ -133,6 +133,8 @@
                 "name": "MISP",
                 "config": "",
                 "params": {
+                  "page": 1,
+                  "limit": 10,
                   "controller": "Events",
                   "search_type": "Basic"
                 },

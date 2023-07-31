@@ -568,9 +568,9 @@
                 "visible": true,
                 "type": "integer",
                 "name": "page",
-                "description": "Specify page number from which you want to retrieve data form MISP.",
+                "description": "Specify page number from which you want to retrieve data form MISP. By default it is set to 1",
                 "tooltip": "Specify page number from which you want to retrieve data form MISP.",
-                "value": 0
+                "value": 1
               },
               {
                 "title": "Limit",
@@ -579,7 +579,7 @@
                 "visible": true,
                 "type": "integer",
                 "name": "limit",
-                "description": "Specify the maximum number of records to be retrieved from MISP.",
+                "description": "Specify the maximum number of records to be retrieved from MISP. By default it is set to 10.",
                 "tooltip": "Specify the maximum number of records to be retrieved from MISP.",
                 "value": 10
               }
