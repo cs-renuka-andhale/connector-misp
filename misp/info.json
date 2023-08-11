@@ -7,14 +7,14 @@
   "cs_compatible": true,
   "version": "2.0.1",
   "category": "Threat Intelligence",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/2.0.1/misp/646/misp-v2-0-1",
   "icon_small_name": "misp_small.jpg",
   "icon_large_name": "misp_large.jpg",
   "configuration": {
     "fields": [
       {
         "title": "Server Name",
-        "description": "Specify Hostname or IP address of the MISP server to which you will connect and perform automated operations.",
+        "description": "Hostname or IP address of the MISP server to connect and perform automated operations.",
         "tooltip": "Specify Hostname or IP address of the MISP server to which you will connect and perform automated operations.",
         "required": true,
         "editable": true,
@@ -24,7 +24,7 @@
       },
       {
         "title": "API Key",
-        "description": "Specify API key that is configured for your account for using the MISP server.",
+        "description": "API key that is configured for your account for using the MISP server.",
         "tooltip": "Specify API key that is configured for your account for using the MISP server.",
         "required": true,
         "editable": true,
@@ -34,8 +34,8 @@
       },
       {
         "title": "Verify SSL",
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not.\nBy default, this option is set as True.",
-        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not.\nBy default, this option is set as True.",
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set to True.",
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not.",
         "required": false,
         "editable": true,
         "visible": true,
@@ -55,7 +55,7 @@
       "parameters": [
         {
           "title": "Event Information",
-          "description": "Specify brief description of the malware or event you are creating, including the internal reference for the event.\nYou can add a detailed description of the event by adding attributes to the event after the event is created.",
+          "description": "Brief description of the malware or event you are creating, including the internal reference for the event. You can add a detailed description of the event by adding attributes to the event after the event is created.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -66,7 +66,7 @@
         {
           "title": "Date",
           "name": "date",
-          "description": "(Optional) Specify date on which you want to create the event in MISP.",
+          "description": "(Optional) Date on which you want to create the event in MISP. The date must be in the yyyy/mm/dd format.",
           "type": "datetime",
           "visible": true,
           "editable": true,
@@ -75,7 +75,7 @@
         },
         {
           "title": "Distribution",
-          "description": "(Optional) Setting that controls on who can view this event once it is published and eventually when it gets pulled. Apart from being able to set which users on this server are allowed to see the event, this also controls whether or not the event will be synchronized to other servers.\nYou can choose between Your organization only, This community only, Connected communities, or All communities.",
+          "description": "(Optional) Setting that controls on who can view this event once it is published and eventually when it gets pulled. Apart from being able to set which users on this server are allowed to see the event, this also controls whether or not the event will be synchronized to other servers. You can choose between Your organization only, This community only, Connected communities, or All communities.",
           "tooltip": "Specify setting that controls on who can view this event once it is published and eventually when it gets pulled. Apart from being able to set which users on this server are allowed to see the event, this also controls whether or not the event will be synchronized to other servers.",
           "required": false,
           "editable": true,
@@ -92,7 +92,7 @@
         },
         {
           "title": "Threat Level",
-          "description": "(Optional) Indicates the risk level of the event.\nYou can categorize events into different threat categories, which are Low, Medium, or High. You can also alternatively leave this field as Undefined.",
+          "description": "(Optional) Indicates the risk level of the event. You can categorize events into different threat categories, which are Low, Medium, or High. You can also alternatively leave this field as Undefined.",
           "tooltip": "Select the risk level of the event.",
           "required": false,
           "editable": true,
@@ -109,7 +109,7 @@
         },
         {
           "title": "Analysis Status",
-          "description": "(Optional) Specify the current stage of analysis of the event.\nYou can choose between Initial, Ongoing, or Completed.",
+          "description": "(Optional) Indicates the current stage of analysis of the event. You can choose between Initial, Ongoing, or Completed.",
           "tooltip": "Specify the current stage of analysis of the event.",
           "required": false,
           "editable": true,
@@ -186,7 +186,7 @@
       "parameters": [
         {
           "title": "Event ID",
-          "description": "Specify ID or UUID of the event whose information you want to retrieve from MISP. You can get ID or UUID of event using Run Search action.",
+          "description": "ID of the event that you want to delete from MISP.",
           "tooltip": "Specify ID or UUID of the event whose information you want to retrieve from MISP. You can get ID or UUID of event using Run Search action.",
           "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
           "required": true,
@@ -220,7 +220,33 @@
           "CryptographicKey": [],
           "EventReport": [],
           "protected": "",
-          "RelatedEvent": [],
+          "RelatedEvent": [
+            {
+              "Event": {
+                "id": "",
+                "date": "",
+                "threat_level_id": "3",
+                "info": "",
+                "published": "",
+                "uuid": "",
+                "analysis": "",
+                "timestamp": "",
+                "distribution": "",
+                "org_id": "",
+                "orgc_id": "",
+                "Org": {
+                  "id": "",
+                  "name": "",
+                  "uuid": ""
+                },
+                "Orgc": {
+                  "id": "",
+                  "name": "",
+                  "uuid": ""
+                }
+              }
+            }
+          ],
           "Tag": [
             {
               "colour": "",
@@ -272,33 +298,6 @@
             }
           ],
           "ShadowAttribute": [],
-          "RelatedEvent": [
-            {
-              "Event": {
-                "id": "",
-                "date": "",
-                "threat_level_id": "3",
-                "info": "",
-                "published": "",
-                "uuid": "",
-                "analysis": "",
-                "timestamp": "",
-                "distribution": "",
-                "org_id": "",
-                "orgc_id": "",
-                "Org": {
-                  "id": "",
-                  "name": "",
-                  "uuid": ""
-                },
-                "Orgc": {
-                  "id": "",
-                  "name": "",
-                  "uuid": ""
-                }
-              }
-            }
-          ],
           "Galaxy": [],
           "Object": []
         }
@@ -309,11 +308,11 @@
       "title": "Add Attributes to Event",
       "category": "investigation",
       "annotation": "add_attributes_to_event",
-      "description": "Adds specified attributes to an existing MISP event based on the event ID, attribute type and value, and other input parameters you have specified.",
+      "description": "Adds specified attributes to an existing MISP event based on the event ID, attribute type and value, and other input parameters you have specified. .",
       "parameters": [
         {
           "title": "Event ID",
-          "description": "Specify ID or UUID of the MISP event to which you want to add attributes. You can get ID or UUID of event using Run Search action.",
+          "description": "ID of the MISP event to which you want to add attributes.",
           "tooltip": "Specify ID or UUID of the MISP event to which you want to add attributes. You can get ID or UUID of event using Run Search action.",
           "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
           "required": true,
@@ -324,7 +323,7 @@
         },
         {
           "title": "Category",
-          "description": "Specify category of the attribute that you want to add to the specific event in MISP. You can choose from options such as Internal reference, Targeting data, Antivirus detection, Payload delivery, Artifacts dropped, Payload installation, Persistence mechanism, Network activity, Payload type, Attribution, External analysis, Financial fraud, Support Tool, Social network, Person, Other.\nNote:Options of Attribute Type parameter will be based on this parameter.",
+          "description": "Category of the attribute that you want to add to the specific event in MISP. You can choose from options such as Internal reference, Network activity, Financial fraud, etc.",
           "tooltip": "Specify category of the attribute that you want to add to the specific event in MISP. Options of Attribute Type parameter will be based on this parameter.",
           "required": true,
           "editable": true,
@@ -352,7 +351,7 @@
         },
         {
           "title": "Attribute Type",
-          "description": "Specify the type of attribute that you want to add to the specific event in MISP.",
+          "description": "Type of attribute that you want to add to the specific event in MISP.",
           "tooltip": "Choose Category parameter first. Specify the type of attribute that you want to add to the specific event in MISP.",
           "required": true,
           "editable": true,
@@ -363,7 +362,7 @@
         },
         {
           "title": "Attribute Value",
-          "description": "Specify the value of the attribute that you want to add to the specific event in MISP. Attribute value could be IP address, Port no, Email address, URL etc.",
+          "description": "Value of the attribute that you want to add to the specific event in MISP.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -373,7 +372,7 @@
         },
         {
           "title": "Attribute Distribution",
-          "description": "(Optional) Specify the setting controls on who can view this attribute once it is published. By default, \"Inherit Event\" is set, which means that this field inherits the distribution that is set on its parent event.\nYou can choose between Your organization only, This community only, Connected communities, or All communities or Inherit Event.",
+          "description": "(Optional)Setting controls on who can view this attribute once it is published. By default, \"Inherit Event\" is set, which means that this field inherits the distribution that is set on its parent event. You can choose between Your organization only, This community only, Connected communities, or All communities or Inherit Event.",
           "tooltip": "Specify the setting controls on who can view this attribute once it is published. By default, \"Inherit Event\" is set, which means that this field inherits the distribution that is set on its parent event.",
           "required": false,
           "editable": true,
@@ -402,7 +401,7 @@
         },
         {
           "title": "Comment",
-          "description": "(Optional) Specify Comments that you want to add for the attributes. Comments are used for informational purposes only and not for correlations.",
+          "description": "(Optional) Comments that you want to add for the attributes. Comments are used for informational purposes only and not for correlations.",
           "tooltip": "Specify Comments that you want to add for the attributes. Comments are used for informational purposes only and not for correlations.",
           "required": false,
           "editable": true,
@@ -446,7 +445,7 @@
       "parameters": [
         {
           "title": "Event ID",
-          "description": "Specify ID or UUID of the event that you want to delete from MISP.  You can get ID or UUID of event using Run Search action.",
+          "description": "ID of the event that you want to delete from MISP.",
           "tooltip": "Specify ID or UUID of the event that you want to delete from MISP.  You can get ID or UUID of event using Run Search action.",
           "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
           "required": true,
@@ -474,7 +473,7 @@
       "parameters": [
         {
           "title": "Attribute ID",
-          "description": "Specify ID or UUID of the attribute that you want to delete from MISP. You can get attribute ID or UUID using Run Search Action.",
+          "description": "ID of the attribute that you want to delete from MISP.",
           "tooltip": "Specify ID or UUID of the attribute that you want to delete from MISP. You can get attribute ID or UUID using Run Search Action.",
           "required": true,
           "editable": true,
@@ -498,7 +497,7 @@
       "parameters": [
         {
           "title": "Controller",
-          "description": "Select whether you want to search for Attributes or Events in MISP.",
+          "description": "Specifies whether you want to search for Attributes or Events in MISP.",
           "tooltip": "Select whether you want to search for Attributes or Events in MISP.",
           "required": true,
           "editable": true,
@@ -516,7 +515,7 @@
           "name": "search_type",
           "type": "select",
           "tooltip": "Select which type of searching you want to do.",
-          "description": "Select which type of searching you want to do. You can select from Basic and Advanced.",
+          "description": "Select the type of searching to perform. You can select from Basic and Advanced",
           "required": true,
           "editable": true,
           "visible": true,
@@ -529,8 +528,8 @@
             "Basic": [
               {
                 "title": "Search From",
-                "description": "Specify the date to retrieve events after this date.",
-                "tooltip": "Specify the date to retrieve events after this date.",
+                "description": "Specify the date after which to retrieve the events.",
+                "tooltip": "Specify the date after which to retrieve the events.",
                 "required": false,
                 "editable": true,
                 "visible": true,
@@ -540,8 +539,8 @@
               },
               {
                 "title": "Search Until",
-                "description": "Specify the date to retrieve events before this date.",
-                "tooltip": "Specify the date to retrieve events before this date.",
+                "description": "Specify the date before which to retrieve the events.",
+                "tooltip": "Specify the date before which to retrieve the events.",
                 "required": false,
                 "editable": true,
                 "visible": true,
@@ -551,8 +550,8 @@
               },
               {
                 "title": "Attribute Type",
-                "description": "Specify the attribute type to retrieve attribute or related events. You can specify from md5, sha1, sha256, ip-src, ip-dst, etc. For more information refer https://www.misp-project.org/openapi/#tag/Attributes/operation/restSearchAttributes",
-                "tooltip": "Specify the attribute type to retrieve related events. You can specify from md5, sha1, sha256, ip-src, ip-dst, etc",
+                "description": "Specify the attribute type to retrieve attribute or related events. You can specify from md5, sha1, sha256, ip-src, ip-dst, etc. For more information, refer to https://www.misp-project.org/openapi/#tag/Attributes/operation/restSearchAttributes.",
+                "tooltip": "Specify the attribute type to retrieve attribute or related events. You can specify from md5, sha1, sha256, ip-src, ip-dst, etc. For more information, refer to connector documentation",
                 "placeholder": "For example md5",
                 "required": false,
                 "editable": true,
@@ -568,8 +567,8 @@
                 "visible": true,
                 "type": "integer",
                 "name": "page",
-                "description": "Specify page number from which you want to retrieve data form MISP. By default it is set to 1",
-                "tooltip": "Specify page number from which you want to retrieve data form MISP.",
+                "description": "Specify the page number from which to retrieve data form MISP. By default it is set to 1.",
+                "tooltip": "Specify the page number from which to retrieve data form MISP",
                 "value": 1
               },
               {
@@ -579,8 +578,8 @@
                 "visible": true,
                 "type": "integer",
                 "name": "limit",
-                "description": "Specify the maximum number of records to be retrieved from MISP. By default it is set to 10.",
-                "tooltip": "Specify the maximum number of records to be retrieved from MISP.",
+                "description": "Specify the maximum number of records to retrieve from MISP. By default it is set to 10.",
+                "tooltip": "Specify the maximum number of records to retrieve from MISP.",
                 "value": 10
               }
             ],
@@ -588,7 +587,7 @@
               {
                 "title": "Search Filter",
                 "required": true,
-                "description": "Specify Search filter as documented at https://www.misp-project.org/openapi/#tag/Events/operation/searchEvents in JSON format. For example {\"page\": 0,  \"limit\": 1,  \"searchDatefrom\": \"2020-01-20\",  \"searchDateuntil\": \"2020-01-20\"}.",
+                "description": "Specify the search criteria in JSON format as documented at https://www.misp-project.org/openapi/#tag/Events/operation/searchEvents. For example:\n   {\n       \"page\": 0,\n       \"limit\": 1,\n       \"searchDatefrom\": \"2020-01-20\",\n       \"searchDateuntil\": \"2020-01-20\"\n   }",
                 "tooltip": "Specify Search filter in JSON format. For more information refer connector documentation.",
                 "editable": true,
                 "visible": true,
@@ -629,7 +628,33 @@
                   "CryptographicKey": [],
                   "EventReport": [],
                   "protected": "",
-                  "RelatedEvent": [],
+                  "RelatedEvent": [
+                    {
+                      "Event": {
+                        "id": "",
+                        "date": "",
+                        "threat_level_id": "3",
+                        "info": "",
+                        "published": "",
+                        "uuid": "",
+                        "analysis": "",
+                        "timestamp": "",
+                        "distribution": "",
+                        "org_id": "",
+                        "orgc_id": "",
+                        "Org": {
+                          "id": "",
+                          "name": "",
+                          "uuid": ""
+                        },
+                        "Orgc": {
+                          "id": "",
+                          "name": "",
+                          "uuid": ""
+                        }
+                      }
+                    }
+                  ],
                   "Tag": [
                     {
                       "colour": "",
@@ -681,33 +706,6 @@
                     }
                   ],
                   "ShadowAttribute": [],
-                  "RelatedEvent": [
-                    {
-                      "Event": {
-                        "id": "",
-                        "date": "",
-                        "threat_level_id": "3",
-                        "info": "",
-                        "published": "",
-                        "uuid": "",
-                        "analysis": "",
-                        "timestamp": "",
-                        "distribution": "",
-                        "org_id": "",
-                        "orgc_id": "",
-                        "Org": {
-                          "id": "",
-                          "name": "",
-                          "uuid": ""
-                        },
-                        "Orgc": {
-                          "id": "",
-                          "name": "",
-                          "uuid": ""
-                        }
-                      }
-                    }
-                  ],
                   "Galaxy": [],
                   "Object": []
                 }
@@ -838,8 +836,7 @@
       "category": "investigation",
       "annotation": "get_tags",
       "description": "Retrieves a list of all existing tags from MISP.",
-      "parameters": [
-      ],
+      "parameters": [],
       "enabled": true,
       "output_schema": {
         "Tag": [
@@ -871,7 +868,7 @@
       "parameters": [
         {
           "title": "Event ID",
-          "description": "Specify ID or UUID of the MISP event to which you want to add the specified tag.",
+          "description": "ID of the MISP event to which you want to add the specified tag",
           "tooltip": "Specify ID or UUID of the MISP event to which you want to add the specified tag.",
           "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
           "required": true,
@@ -882,7 +879,7 @@
         },
         {
           "title": "Tag",
-          "description": "Specify ID or name of the tag that you want to add to the specified event in MISP.",
+          "description": "Tag that you want to add to the specified event in MISP.",
           "tooltip": "Specify ID or name of the tag that you want to add to the specified event in MISP.",
           "required": true,
           "editable": true,
@@ -907,7 +904,7 @@
       "parameters": [
         {
           "title": "Event ID",
-          "description": "Specify ID or UUID of the MISP event from which you want to remove the specified tag.",
+          "description": "ID of the MISP event from which you want to remove the specified tag.",
           "tooltip": "Specify ID or UUID of the MISP event from which you want to remove the specified tag.",
           "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
           "required": true,
@@ -918,7 +915,7 @@
         },
         {
           "title": "Tag",
-          "description": "Specify ID or name of the tag that you want to remove to the specified event in MISP.",
+          "description": "Tag that you want to remove from the specified event in MISP.",
           "tooltip": "Specify ID or name of the tag that you want to remove to the specified event in MISP.",
           "required": true,
           "editable": true,
@@ -940,8 +937,7 @@
       "category": "investigation",
       "annotation": "get_attribute_type",
       "description": "Retrieves a list of all existing specific attribute type.",
-      "parameters": [
-      ],
+      "parameters": [],
       "enabled": true,
       "visible": false,
       "output_schema": []
