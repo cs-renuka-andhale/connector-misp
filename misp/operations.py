@@ -84,7 +84,7 @@ def create_event(config, params):
     try:
         mp = MISP(config)
         url = 'events'
-        date = params.get('date').split("T")[0]
+        date = params.get('date').split("T")[0] if params.get('date') else None
         payload = {
             'Event': {
                 'date': date,
