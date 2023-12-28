@@ -1,7 +1,3 @@
-#### What's Improved
-- Updated the "Run Search" operation as follows:
-  - Added new parameter `Search Type` parameter with Basic and Advanced options:
-    - Added `Search From`, `Search Until`, `Attribute Type`, `Page` and `Limit` parameters for Basic Search.
-    - Added `Search Filter` parameter for advanced search.
-- Update output schemas for all actions.
- 
+#### The following enhancements have been made to the MISP Connector in version 2.0.2:
+- The indicator enrichment playbook File Hash / Domain / IP / URL > MISP > Enrichment includes enriching file hashes, domains, IPs and URLs via MISP. Optionally, it retrieves the indicator reputation and calculates the reputation summary from the MISP.
+
