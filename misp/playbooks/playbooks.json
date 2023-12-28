@@ -3,7 +3,7 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - MISP - 2.0.1",
+      "name": "Sample - MISP - 2.0.2",
       "description": "Sample playbooks for \"MISP\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "uuid": "dede779e-d81b-484b-8d4d-f4894cb548df",
@@ -47,7 +47,7 @@
                   "hide_tag": false,
                   "exportable": false
                 },
-                "version": "2.0.1",
+                "version": "2.0.2",
                 "connector": "misp",
                 "operation": "add_tag",
                 "operationTitle": "Add Tag",
@@ -151,7 +151,7 @@
                   "search_type": "Advanced",
                   "search_filter": "{\n  \"page\": 0,\n  \"limit\": 1,\n  \"active\": true,\n  \"value\": \"{{vars.input.records[0].value}}\"\n}"
                 },
-                "version": "2.0.1",
+                "version": "2.0.2",
                 "connector": "misp",
                 "operation": "run_search",
                 "operationTitle": "Run Search",
@@ -268,7 +268,7 @@
                 "params": {
                   "event_id": 10
                 },
-                "version": "2.0.1",
+                "version": "2.0.2",
                 "connector": "misp",
                 "operation": "delete_event",
                 "operationTitle": "Delete Event",
@@ -376,7 +376,7 @@
                   "tag": "2",
                   "event_id": 9
                 },
-                "version": "2.0.1",
+                "version": "2.0.2",
                 "connector": "misp",
                 "operation": "add_tag_to_event",
                 "operationTitle": "Add Tag to Event",
@@ -478,7 +478,7 @@
                 "params": {
                   "event_id": 10
                 },
-                "version": "2.0.1",
+                "version": "2.0.2",
                 "connector": "misp",
                 "operation": "get_event",
                 "operationTitle": "Get Event",
@@ -689,7 +689,7 @@
                   "search_type": "Advanced",
                   "search_filter": "{\n  \"page\": 0,\n  \"limit\": 1,\n  \"active\": true,\n  \"value\": \"{{vars.indicator_value}}\"\n}"
                 },
-                "version": "2.0.1",
+                "version": "2.0.2",
                 "connector": "misp",
                 "operation": "run_search",
                 "mock_result": "{\n  \"data\": {\n    \"response\": {\n      \"Attribute\": [\n        {\n          \"id\": \"1\",\n          \"type\": \"url\",\n          \"uuid\": \"69031264-aa7b-45b6-a12d-6512c5bee841\",\n          \"Event\": {\n            \"id\": \"1\",\n            \"info\": \"Phishtank online valid phishing feed\",\n            \"uuid\": \"bfb7eebf-c349-4058-8d7d-409b41e7ca46\",\n            \"org_id\": \"1\",\n            \"orgc_id\": \"1\",\n            \"distribution\": \"0\"\n          },\n          \"value\": \"{{vars.indicator_value}}\",\n          \"to_ids\": true,\n          \"comment\": \"\",\n          \"deleted\": false,\n          \"category\": \"Network activity\",\n          \"event_id\": \"1\",\n          \"last_seen\": null,\n          \"object_id\": \"0\",\n          \"timestamp\": \"1609421113\",\n          \"first_seen\": null,\n          \"distribution\": \"0\",\n          \"object_relation\": null,\n          \"sharing_group_id\": \"0\",\n          \"disable_correlation\": false\n        }\n      ]\n    }\n  },\n  \"status\": \"Success\",\n  \"message\": \"\",\n  \"operation\": null,\n  \"execution_time\": \"167 ms\"\n}",
@@ -718,7 +718,7 @@
                 "params": {
                   "event_id": "{{vars.threat_data.attribute.Event.id}}"
                 },
-                "version": "2.0.1",
+                "version": "2.0.2",
                 "connector": "misp",
                 "operation": "get_event",
                 "operationTitle": "Get Event",
@@ -955,7 +955,7 @@
                   "event_id": 16,
                   "distribution": "Your Organisation Only"
                 },
-                "version": "2.0.1",
+                "version": "2.0.2",
                 "connector": "misp",
                 "operation": "add_attributes_to_event",
                 "operationTitle": "Add Attributes to Event",
@@ -1080,7 +1080,7 @@
                   "tag": "2",
                   "event_id": 9
                 },
-                "version": "2.0.1",
+                "version": "2.0.2",
                 "connector": "misp",
                 "operation": "remove_tag_from_event",
                 "operationTitle": "Remove Tag from Event",
@@ -1198,7 +1198,7 @@
                   "other_attributes": "{\n  \"port\": \"80\"\n}",
                   "attribute_distribution": "This Community Only"
                 },
-                "version": "2.0.1",
+                "version": "2.0.2",
                 "connector": "misp",
                 "operation": "create_event",
                 "operationTitle": "Create Event",
@@ -1337,7 +1337,7 @@
                 "params": {
                   "attribute_id": "18"
                 },
-                "version": "2.0.1",
+                "version": "2.0.2",
                 "connector": "misp",
                 "operation": "delete_attribute",
                 "operationTitle": "Delete Attribute from Event",
@@ -1440,7 +1440,7 @@
                 "name": "MISP",
                 "config": "",
                 "params": [],
-                "version": "2.0.1",
+                "version": "2.0.2",
                 "connector": "misp",
                 "operation": "get_tags",
                 "operationTitle": "List All Tags",
