@@ -10,6 +10,14 @@
   "help_online": "",
   "icon_small_name": "misp_small.jpg",
   "icon_large_name": "misp_large.jpg",
+  "tags": [
+    "Enrichment",
+    "IP_Enrichment",
+    "FileHash_Enrichment",
+    "URL_Enrichment",
+    "Domain_Enrichment",
+    "File_Enrichment"
+  ],
   "configuration": {
     "fields": [
       {
@@ -927,8 +935,7 @@
         {
           "title": "Event ID",
           "description": "ID of the MISP event to which you want to add the specified tag",
-          "tooltip": "Specify ID or UUID of the MISP event to which you want to add the specified tag.",
-          "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
+          "tooltip": "Specify ID of the MISP event to which you want to add the specified tag.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -963,8 +970,7 @@
         {
           "title": "Event ID",
           "description": "ID of the MISP event from which you want to remove the specified tag.",
-          "tooltip": "Specify ID or UUID of the MISP event from which you want to remove the specified tag.",
-          "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
+          "tooltip": "Specify ID of the MISP event from which you want to remove the specified tag.",
           "required": true,
           "editable": true,
           "visible": true,
