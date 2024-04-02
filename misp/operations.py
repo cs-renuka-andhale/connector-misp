@@ -238,7 +238,10 @@ def add_tag(config, params):
             'exportable': params.get('exportable'),
             'hide_tag': params.get('hide_tag'),
             'org_id': params.get('org_id'),
-            'user_id': params.get('user_id')
+            'user_id': params.get('user_id'),
+            'colour': params.get('colour'),
+            'is_galaxy': params.get('is_galaxy'),
+            'is_custom_galaxy': params.get('is_galaxy')
         }
         payload = mp.build_payload(payload)
         url = 'tags/add'

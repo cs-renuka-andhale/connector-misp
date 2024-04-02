@@ -794,6 +794,17 @@
           "name": "name"
         },
         {
+          "title": "Colour",
+          "description": "Specify the tag colour you want to allocate for the tag",
+          "tooltip": "Specify the tag colour you want to allocate for the tag",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "colour",
+          "placeholder": "#ffffff"
+        },
+        {
           "title": "Exportable",
           "description": "Select this checkbox if you want to create an exportable tag in MISP.",
           "required": false,
@@ -814,6 +825,28 @@
           "name": "hide_tag",
           "value": false,
           "tooltip": "Select this checkbox if you want to hide the created tag in MISP."
+        },
+        {
+          "title": "Is Galaxy",
+          "description": "Select this checkbox if you want to create a galaxy tag in MISP.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "name": "is_galaxy",
+          "value": false,
+          "tooltip": "Select this checkbox if you want to create a galaxy tag in MISP"
+        },
+        {
+          "title": "Is Custom Galaxy",
+          "description": "Select this checkbox if you want to create a custom galaxy tag in MISP.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "name": "is_custom_galaxy",
+          "value": false,
+          "tooltip": "Select this checkbox if you want to create a custom galaxy tag in MISP"
         },
         {
           "title": "Organisation ID",
