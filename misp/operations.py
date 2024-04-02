@@ -1,7 +1,7 @@
 """
 Copyright start
 MIT License
-Copyright (c) 2023 Fortinet Inc
+Copyright (c) 2024 Fortinet Inc
 Copyright end
 """
 
@@ -13,7 +13,6 @@ from connectors.core.connector import get_logger, ConnectorError
 from requests_toolbelt.utils import dump
 
 logger = get_logger('misp')
-
 
 error_msgs = {
     400: 'Bad/Invalid Request',
@@ -96,6 +95,12 @@ def create_event(config, params):
                 'published': params.get('published')
             }
         }
+        extends_uuid = params.get('extends_uuid')
+        if extends_uuid:
+            payload.get('Event', {}).update({'extends_uuid': extends_uuid})
+        additional_attributes = params.get('additional_attributes')
+        if additional_attributes:
+            payload.get('Event', {}).update(additional_attributes)
         payload = mp.build_payload(payload['Event'])
         response = mp.make_rest_call(method='POST', url=url, data=json.dumps(payload))
         return response
@@ -233,7 +238,8 @@ def add_tag(config, params):
             'exportable': params.get('exportable'),
             'hide_tag': params.get('hide_tag'),
             'org_id': params.get('org_id'),
-            'user_id': params.get('user_id')
+            'user_id': params.get('user_id'),
+            'colour': params.get('colour')
         }
         payload = mp.build_payload(payload)
         url = 'tags/add'
@@ -248,6 +254,7 @@ def add_tag(config, params):
 def run_search(config, params):
     try:
         mp = MISP(config)
+        payload = {}
         search_type = params.get('search_type')
         if search_type == 'Advanced':
             payload = params.get('search_filter')
@@ -269,6 +276,16 @@ def run_search(config, params):
     except Exception as err:
         logger.exception("Error while searching Events/Attributes in MISP. Error as follows: {0}".format(str(err)))
         raise ConnectorError("Error while searching Events/Attributes in MISP. Error as follows: {0}".format(str(err)))
+
+
+def get_organisations(config, params):
+    mp = MISP(config)
+    return mp.make_rest_call(method='GET', url='organisations')
+
+
+def get_users(config, params):
+    mp = MISP(config)
+    return mp.make_rest_call(method='GET', url='admin/users')
 
 
 def get_attribute_type(config, params):
@@ -302,5 +319,7 @@ operations = {
     'remove_tag_from_event': remove_tag_from_event,
     'get_tags': get_tags,
     'run_search': run_search,
-    'get_attribute_type': get_attribute_type
+    'get_attribute_type': get_attribute_type,
+    'get_organisations': get_organisations,
+    'get_users': get_users
 }

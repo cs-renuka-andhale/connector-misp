@@ -2,7 +2,7 @@
   "name": "misp",
   "label": "MISP",
   "description": "MISP connector allows to create MISP event, delete MISP event, add and delete attributes (IOCs), add and delete tags, into existing MISP event",
-  "publisher": "Fortinet CSE",
+  "publisher": "Fortinet",
   "cs_approved": false,
   "cs_compatible": true,
   "version": "2.0.2",
@@ -10,6 +10,14 @@
   "help_online": "",
   "icon_small_name": "misp_small.jpg",
   "icon_large_name": "misp_large.jpg",
+  "tags": [
+    "Enrichment",
+    "IP_Enrichment",
+    "FileHash_Enrichment",
+    "URL_Enrichment",
+    "Domain_Enrichment",
+    "File_Enrichment"
+  ],
   "configuration": {
     "fields": [
       {
@@ -133,6 +141,28 @@
           "name": "published",
           "value": false,
           "tooltip": "Select this checkbox to publish the event in MISP"
+        },
+        {
+          "title": "Extends Event",
+          "type": "text",
+          "name": "extends_uuid",
+          "description": "Specify the ID or UUID of the event to extend the event",
+          "tooltip": "Specify the ID or UUID of the event to extend the event.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false
+        },
+        {
+          "title": "Additional Attributes",
+          "type": "json",
+          "name": "additional_attributes",
+          "description": "Specify the additional attributes required to create the event in JSON format",
+          "tooltip": "Specify the additional attributes required to create the event in JSON format",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false
         }
       ],
       "enabled": true,
@@ -143,12 +173,15 @@
           "org_id": "",
           "date": "",
           "threat_level_id": "",
+          "CryptographicKey": [],
           "info": "",
           "published": "",
           "uuid": "",
           "attribute_count": "",
           "analysis": "",
+          "protected": "",
           "timestamp": "",
+          "EventReport": [],
           "distribution": "",
           "proposal_email_lock": "",
           "locked": "",
@@ -769,6 +802,17 @@
           "name": "name"
         },
         {
+          "title": "Colour",
+          "description": "Specify the tag colour you want to allocate for the tag",
+          "tooltip": "Specify the tag colour you want to allocate for the tag",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "name": "colour",
+          "placeholder": "#ffffff"
+        },
+        {
           "title": "Exportable",
           "description": "Select this checkbox if you want to create an exportable tag in MISP.",
           "required": false,
@@ -869,8 +913,7 @@
         {
           "title": "Event ID",
           "description": "ID of the MISP event to which you want to add the specified tag",
-          "tooltip": "Specify ID or UUID of the MISP event to which you want to add the specified tag.",
-          "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
+          "tooltip": "Specify ID of the MISP event to which you want to add the specified tag.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -905,8 +948,7 @@
         {
           "title": "Event ID",
           "description": "ID of the MISP event from which you want to remove the specified tag.",
-          "tooltip": "Specify ID or UUID of the MISP event from which you want to remove the specified tag.",
-          "placeholder": "e.g. 34 or 5fd0c454-c3c0-4e7e-80ef-a35bc0a3ab44",
+          "tooltip": "Specify ID of the MISP event from which you want to remove the specified tag.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -941,6 +983,113 @@
       "enabled": true,
       "visible": false,
       "output_schema": []
+    },
+    {
+      "operation": "get_organisations",
+      "title": "Get Organisations",
+      "category": "investigation",
+      "annotation": "get_organisations",
+      "description": "Retrieves a list of all available organisations from MISP.",
+      "parameters": [],
+      "enabled": true,
+      "visible": true,
+      "output_schema": [
+        {
+          "Organisation": {
+            "id": "",
+            "name": "",
+            "date_created": "",
+            "date_modified": "",
+            "description": "",
+            "type": "",
+            "nationality": "",
+            "sector": "",
+            "created_by": "",
+            "uuid": "",
+            "contacts": "",
+            "local": "",
+            "restricted_to_domain": [],
+            "landingpage": "",
+            "user_count": "",
+            "created_by_email": ""
+          }
+        }
+      ]
+    },
+    {
+      "operation": "get_users",
+      "title": "Get Users",
+      "category": "investigation",
+      "annotation": "get_users",
+      "description": "Retrieves a list of all available users from MISP",
+      "parameters": [],
+      "enabled": true,
+      "visible": true,
+      "output_schema": [
+        {
+          "User": {
+            "id": "",
+            "org_id": "",
+            "server_id": "",
+            "email": "",
+            "autoalert": "",
+            "authkey": "",
+            "invited_by": "",
+            "gpgkey": "",
+            "certif_public": "",
+            "nids_sid": "",
+            "termsaccepted": "",
+            "newsread": "",
+            "role_id": "",
+            "change_pw": "",
+            "contactalert": "",
+            "disabled": "",
+            "expiration": "",
+            "current_login": "",
+            "last_login": "",
+            "force_logout": "",
+            "date_created": "",
+            "date_modified": ""
+          },
+          "Role": {
+            "id": "",
+            "name": "",
+            "perm_add": "",
+            "perm_modify": "",
+            "perm_modify_org": "",
+            "perm_publish": "",
+            "perm_delegate": "",
+            "perm_sync": "",
+            "perm_admin": "",
+            "perm_audit": "",
+            "perm_auth": "",
+            "perm_site_admin": "",
+            "perm_regexp_access": "",
+            "perm_tagger": "",
+            "perm_template": "",
+            "perm_sharing_group": "",
+            "perm_tag_editor": "",
+            "perm_sighting": "",
+            "perm_object_template": "",
+            "perm_publish_zmq": "",
+            "perm_publish_kafka": "",
+            "perm_decaying": "",
+            "perm_galaxy_editor": "",
+            "default_role": "",
+            "memory_limit": "",
+            "max_execution_time": "",
+            "restricted_to_site_admin": "",
+            "enforce_rate_limit": "",
+            "rate_limit_count": "",
+            "permission": "",
+            "permission_description": ""
+          },
+          "Organisation": {
+            "id": "",
+            "name": ""
+          }
+        }
+      ]
     }
   ]
 }
