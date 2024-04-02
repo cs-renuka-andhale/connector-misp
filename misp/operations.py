@@ -14,7 +14,6 @@ from requests_toolbelt.utils import dump
 
 logger = get_logger('misp')
 
-
 error_msgs = {
     400: 'Bad/Invalid Request',
     401: 'Unauthorized: Invalid credentials provided failed to authorize',
@@ -96,6 +95,12 @@ def create_event(config, params):
                 'published': params.get('published')
             }
         }
+        extends_uuid = params.get('extends_uuid')
+        if extends_uuid:
+            payload.get('Event', {}).update({'extends_uuid': extends_uuid})
+        additional_attributes = params.get('additional_attributes')
+        if additional_attributes:
+            payload.get('Event', {}).update(additional_attributes)
         payload = mp.build_payload(payload['Event'])
         response = mp.make_rest_call(method='POST', url=url, data=json.dumps(payload))
         return response
@@ -248,6 +253,7 @@ def add_tag(config, params):
 def run_search(config, params):
     try:
         mp = MISP(config)
+        payload = {}
         search_type = params.get('search_type')
         if search_type == 'Advanced':
             payload = params.get('search_filter')

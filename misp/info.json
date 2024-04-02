@@ -133,6 +133,28 @@
           "name": "published",
           "value": false,
           "tooltip": "Select this checkbox to publish the event in MISP"
+        },
+        {
+          "title": "Extends Event",
+          "type": "text",
+          "name": "extends_uuid",
+          "description": "Specify the ID or UUID of the event to extend the event",
+          "tooltip": "Specify the ID or UUID of the event to extend the event.",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false
+        },
+        {
+          "title": "Additional Attributes",
+          "type": "json",
+          "name": "additional_attributes",
+          "description": "Specify the additional attributes required to create the event in JSON format",
+          "tooltip": "Specify the additional attributes required to create the event in JSON format",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "value": false
         }
       ],
       "enabled": true,
