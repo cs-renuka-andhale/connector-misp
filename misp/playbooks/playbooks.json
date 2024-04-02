@@ -6,8 +6,9 @@
       "name": "Sample - MISP - 2.0.2",
       "description": "Sample playbooks for \"MISP\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
+      "image": "",
       "uuid": "dede779e-d81b-484b-8d4d-f4894cb548df",
-      "id": 133,
+      "id": 276,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [
@@ -15,6 +16,107 @@
         "misp"
       ],
       "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Users",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves a list of all available users from MISP",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1712039799,
+          "collection": "/api/3/workflow_collections/dede779e-d81b-484b-8d4d-f4894cb548df",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/6e1f17bd-6420-4c7c-9021-2c90ba1c8b22",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Users",
+              "description": null,
+              "arguments": {
+                "name": "MISP",
+                "config": "ddc30f5f-2461-41e9-b90e-12caa0d4af73",
+                "params": [],
+                "version": "2.0.2",
+                "connector": "misp",
+                "operation": "get_users",
+                "operationTitle": "Get Users",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "220f58ef-21ed-4f5b-b432-16ee998e82f8"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "b767836e-7a43-40f1-9f67-9630bfb466a1",
+                "title": "MISP: Get Users",
+                "resources": [
+                  "alerts"
+                ],
+                "__triggerLimit": true,
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "triggerOnSource": true,
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "showToasterMessage": {
+                  "visible": false,
+                  "messageVisible": true
+                },
+                "triggerOnReplicate": false,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "6e1f17bd-6420-4c7c-9021-2c90ba1c8b22"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Users",
+              "targetStep": "/api/3/workflow_steps/220f58ef-21ed-4f5b-b432-16ee998e82f8",
+              "sourceStep": "/api/3/workflow_steps/6e1f17bd-6420-4c7c-9021-2c90ba1c8b22",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "1ca5f7df-cf75-4196-9b7c-ad0405c58210"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "014c7460-6503-4ff4-86ee-b44434111b4a",
+          "id": 3166,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "MISP",
+            "misp"
+          ]
+        },
         {
           "@type": "Workflow",
           "triggerLimit": null,
@@ -111,7 +213,7 @@
           "groups": [],
           "priority": null,
           "uuid": "303599d0-4b36-4aa3-9cc0-88824526e65a",
-          "id": 1942,
+          "id": 3167,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -230,7 +332,108 @@
           "groups": [],
           "priority": null,
           "uuid": "3d88125d-3103-4c68-adae-ea2d56d8b70a",
-          "id": 1943,
+          "id": 3168,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "MISP",
+            "misp"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Organisations",
+          "aliasName": null,
+          "tag": null,
+          "description": "Retrieves a list of all available organisations from MISP",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1712040646,
+          "collection": "/api/3/workflow_collections/dede779e-d81b-484b-8d4d-f4894cb548df",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/771a1a60-bdb1-4d5f-acbe-ea09dd1f90b8",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Organisations",
+              "description": null,
+              "arguments": {
+                "name": "MISP",
+                "config": "test",
+                "params": [],
+                "version": "2.0.2",
+                "connector": "misp",
+                "operation": "get_organisations",
+                "operationTitle": "Get Organisations",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "99a68410-17ad-44de-bb87-d073ad6bb17b"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "02c32a30-7122-42b1-a207-9c10a85f7875",
+                "title": "MISP: Get Organisations",
+                "resources": [
+                  "alerts"
+                ],
+                "__triggerLimit": true,
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "triggerOnSource": true,
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "showToasterMessage": {
+                  "visible": false,
+                  "messageVisible": true
+                },
+                "triggerOnReplicate": false,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "771a1a60-bdb1-4d5f-acbe-ea09dd1f90b8"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Organisations",
+              "targetStep": "/api/3/workflow_steps/99a68410-17ad-44de-bb87-d073ad6bb17b",
+              "sourceStep": "/api/3/workflow_steps/771a1a60-bdb1-4d5f-acbe-ea09dd1f90b8",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "a52f067b-7e86-4ba5-9461-f914e53061c2"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "uuid": "46164c76-1362-433b-a98c-80055f08beca",
+          "id": 3169,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -337,7 +540,7 @@
           "groups": [],
           "priority": null,
           "uuid": "4e290ff3-2d5a-440e-9c9a-0ab9bf8697a9",
-          "id": 1944,
+          "id": 3170,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -440,7 +643,7 @@
           "groups": [],
           "priority": null,
           "uuid": "6cbf0407-f75f-4beb-a3f6-991a08c0215d",
-          "id": 1945,
+          "id": 3171,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -590,7 +793,7 @@
           "groups": [],
           "priority": null,
           "uuid": "7ff360d4-12c0-4ea0-bff8-4525c425494f",
-          "id": 1946,
+          "id": 3172,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -907,7 +1110,7 @@
           "groups": [],
           "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
           "uuid": "833db061-9b01-42d6-8ee6-3a9099fe470a",
-          "id": 1972,
+          "id": 3173,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1041,7 +1244,7 @@
           "groups": [],
           "priority": null,
           "uuid": "85d80452-658c-4272-988b-b4d266e228a5",
-          "id": 1947,
+          "id": 3174,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1144,7 +1347,7 @@
           "groups": [],
           "priority": null,
           "uuid": "aa2f48d2-87e4-4812-a021-7ed6e08e5e2d",
-          "id": 1948,
+          "id": 3175,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1299,7 +1502,7 @@
           "groups": [],
           "priority": null,
           "uuid": "b049627c-cc06-4641-a3da-a3f4f40f30b0",
-          "id": 1949,
+          "id": 3176,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1404,7 +1607,7 @@
           "groups": [],
           "priority": null,
           "uuid": "bc827935-937a-44c3-86ba-029569975e25",
-          "id": 1950,
+          "id": 3177,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1504,7 +1707,7 @@
           "groups": [],
           "priority": null,
           "uuid": "e21bd670-bf91-4383-b430-796bf2587c61",
-          "id": 1951,
+          "id": 3178,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,

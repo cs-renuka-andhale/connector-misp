@@ -277,6 +277,16 @@ def run_search(config, params):
         raise ConnectorError("Error while searching Events/Attributes in MISP. Error as follows: {0}".format(str(err)))
 
 
+def get_organisations(config, params):
+    mp = MISP(config)
+    return mp.make_rest_call(method='GET', url='organisations')
+
+
+def get_users(config, params):
+    mp = MISP(config)
+    return mp.make_rest_call(method='GET', url='admin/users')
+
+
 def get_attribute_type(config, params):
     category = params.get('category')
     if category:
@@ -308,5 +318,7 @@ operations = {
     'remove_tag_from_event': remove_tag_from_event,
     'get_tags': get_tags,
     'run_search': run_search,
-    'get_attribute_type': get_attribute_type
+    'get_attribute_type': get_attribute_type,
+    'get_organisations': get_organisations,
+    'get_users': get_users
 }

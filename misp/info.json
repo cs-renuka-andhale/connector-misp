@@ -966,6 +966,113 @@
       "enabled": true,
       "visible": false,
       "output_schema": []
+    },
+    {
+      "operation": "get_organisations",
+      "title": "Get Organisations",
+      "category": "investigation",
+      "annotation": "get_organisations",
+      "description": "Retrieves a list of all available organisations from MISP.",
+      "parameters": [],
+      "enabled": true,
+      "visible": true,
+      "output_schema": [
+        {
+          "Organisation": {
+            "id": "",
+            "name": "",
+            "date_created": "",
+            "date_modified": "",
+            "description": "",
+            "type": "",
+            "nationality": "",
+            "sector": "",
+            "created_by": "",
+            "uuid": "",
+            "contacts": "",
+            "local": "",
+            "restricted_to_domain": [],
+            "landingpage": "",
+            "user_count": "",
+            "created_by_email": ""
+          }
+        }
+      ]
+    },
+    {
+      "operation": "get_users",
+      "title": "Get Users",
+      "category": "investigation",
+      "annotation": "get_users",
+      "description": "Retrieves a list of all available users from MISP",
+      "parameters": [],
+      "enabled": true,
+      "visible": true,
+      "output_schema": [
+        {
+          "User": {
+            "id": "",
+            "org_id": "",
+            "server_id": "",
+            "email": "",
+            "autoalert": "",
+            "authkey": "",
+            "invited_by": "",
+            "gpgkey": "",
+            "certif_public": "",
+            "nids_sid": "",
+            "termsaccepted": "",
+            "newsread": "",
+            "role_id": "",
+            "change_pw": "",
+            "contactalert": "",
+            "disabled": "",
+            "expiration": "",
+            "current_login": "",
+            "last_login": "",
+            "force_logout": "",
+            "date_created": "",
+            "date_modified": ""
+          },
+          "Role": {
+            "id": "",
+            "name": "",
+            "perm_add": "",
+            "perm_modify": "",
+            "perm_modify_org": "",
+            "perm_publish": "",
+            "perm_delegate": "",
+            "perm_sync": "",
+            "perm_admin": "",
+            "perm_audit": "",
+            "perm_auth": "",
+            "perm_site_admin": "",
+            "perm_regexp_access": "",
+            "perm_tagger": "",
+            "perm_template": "",
+            "perm_sharing_group": "",
+            "perm_tag_editor": "",
+            "perm_sighting": "",
+            "perm_object_template": "",
+            "perm_publish_zmq": "",
+            "perm_publish_kafka": "",
+            "perm_decaying": "",
+            "perm_galaxy_editor": "",
+            "default_role": "",
+            "memory_limit": "",
+            "max_execution_time": "",
+            "restricted_to_site_admin": "",
+            "enforce_rate_limit": "",
+            "rate_limit_count": "",
+            "permission": "",
+            "permission_description": ""
+          },
+          "Organisation": {
+            "id": "",
+            "name": ""
+          }
+        }
+      ]
     }
   ]
 }
