@@ -3,7 +3,7 @@
   "label": "MISP",
   "description": "MISP connector allows to create MISP event, delete MISP event, add and delete attributes (IOCs), add and delete tags, into existing MISP event",
   "publisher": "Fortinet",
-  "cs_approved": false,
+  "cs_approved": true,
   "cs_compatible": true,
   "version": "2.0.2",
   "category": "Threat Intelligence",
