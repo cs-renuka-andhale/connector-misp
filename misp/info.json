@@ -5,7 +5,7 @@
   "publisher": "Fortinet",
   "cs_approved": true,
   "cs_compatible": true,
-  "version": "2.0.2",
+  "version": "2.1.0",
   "category": "Threat Intelligence",
   "help_online": "",
   "icon_small_name": "misp_small.jpg",
