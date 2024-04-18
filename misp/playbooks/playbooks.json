@@ -345,10 +345,10 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get Organisations",
+          "name": "Get Organizations",
           "aliasName": null,
           "tag": null,
-          "description": "Retrieves a list of all available organisations from MISP",
+          "description": "Retrieves a list of all available Organizations from MISP",
           "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
@@ -362,7 +362,7 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Get Organisations",
+              "name": "Get Organizations",
               "description": null,
               "arguments": {
                 "name": "MISP",
@@ -371,7 +371,7 @@
                 "version": "2.0.2",
                 "connector": "misp",
                 "operation": "get_organisations",
-                "operationTitle": "Get Organisations",
+                "operationTitle": "Get Organizations",
                 "pickFromTenant": false,
                 "step_variables": []
               },
@@ -388,7 +388,7 @@
               "description": null,
               "arguments": {
                 "route": "02c32a30-7122-42b1-a207-9c10a85f7875",
-                "title": "MISP: Get Organisations",
+                "title": "MISP: Get Organizations",
                 "resources": [
                   "alerts"
                 ],
@@ -421,7 +421,7 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Start -> Get Organisations",
+              "name": "Start -> Get Organizations",
               "targetStep": "/api/3/workflow_steps/99a68410-17ad-44de-bb87-d073ad6bb17b",
               "sourceStep": "/api/3/workflow_steps/771a1a60-bdb1-4d5f-acbe-ea09dd1f90b8",
               "label": null,

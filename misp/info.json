@@ -802,9 +802,9 @@
           "name": "name"
         },
         {
-          "title": "Colour",
-          "description": "Specify the tag colour you want to allocate for the tag",
-          "tooltip": "Specify the tag colour you want to allocate for the tag",
+          "title": "Color",
+          "description": "Specify the tag Color you want to allocate for the tag",
+          "tooltip": "Specify the tag Color you want to allocate for the tag",
           "required": true,
           "editable": true,
           "visible": true,
