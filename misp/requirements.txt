@@ -1,3 +1,0 @@
-pymisp==2.4.85
-bs4==0.0.1
-validators==0.12.0
