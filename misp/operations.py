@@ -109,6 +109,18 @@ def create_event(config, params):
         raise ConnectorError("Error while creating event in MISP. Error as follows: {0}".format(str(err)))
 
 
+def get_events(config, params):
+  try:
+    mp = MISP(config)
+    url = 'events/index'
+    data = params.get('searchJSONBody')
+    response = mp.make_rest_call(method='POST', url=url, data=json.dumps(data))
+    return response
+  except Exception as err:
+    logger.exception("Error while getting event from MISP. Error as follows: {0}".format(str(err)))
+    raise ConnectorError("Error while getting event from MISP. Error as follows: {0}".format(str(err)))
+
+
 def get_event(config, params):
     try:
         mp = MISP(config)
@@ -295,6 +307,17 @@ def get_attribute_type(config, params):
         return type
 
 
+def generic_rest_api_call(config, params):
+    mp = MISP(config)
+    endpoint = params.get('endpoint','')
+    query_params = params.get('query_params', {})
+    method = params.get('method', '')
+    payload = params.get('payload')
+    if not endpoint.startswith('/'):
+        endpoint = f'/{endpoint}'
+    return mp.make_rest_call(method=method, url=endpoint, params=query_params, data=payload)
+    
+
 def _check_health(config):
     try:
         response = login(config, params="")
@@ -310,6 +333,7 @@ def _check_health(config):
 
 operations = {
     'create_event': create_event,
+    'get_events': get_events,
     'get_event': get_event,
     'add_attributes_to_event': add_attributes_to_event,
     'delete_attribute': delete_attribute,
@@ -321,5 +345,6 @@ operations = {
     'run_search': run_search,
     'get_attribute_type': get_attribute_type,
     'get_organisations': get_organisations,
-    'get_users': get_users
+    'get_users': get_users,
+    'generic_rest_api_call': generic_rest_api_call
 }
