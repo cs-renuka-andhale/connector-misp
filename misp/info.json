@@ -5,9 +5,9 @@
   "publisher": "Fortinet",
   "cs_approved": true,
   "cs_compatible": true,
-  "version": "2.1.0",
+  "version": "2.2.0",
   "category": "Threat Intelligence",
-  "help_online": "http://docs.fortinet.com/document/fortisoar/2.1.0/misp/833/misp-v2-1-0",
+  "help_online": "",
   "icon_small_name": "misp_small.jpg",
   "icon_large_name": "misp_large.jpg",
   "tags": [
@@ -209,6 +209,75 @@
           "Object": []
         }
       }
+    },
+    {
+      "operation": "get_events",
+      "title": "Get Events List",
+      "category": "investigation",
+      "annotation": "get_events",
+      "description": "Retrieves information about events from MISP based on the filter you have specified.",
+      "parameters": [
+        {
+          "title": "Search JSON Body",
+          "type": "object",
+          "name": "searchJSONBody",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": null,
+          "tooltip": "Please provide JSON BODY for searching event index. Refer to MISP /events/index API Documentation"
+        }
+      ],
+      "enabled": true,
+      "output_schema": [
+        {
+          "id": "",
+          "Org": {
+            "id": "",
+            "name": "",
+            "uuid": ""
+          },
+          "Orgc": {
+            "id": "",
+            "name": "",
+            "uuid": ""
+          },
+          "date": "",
+          "info": "",
+          "uuid": "",
+          "locked": "",
+          "org_id": "",
+          "orgc_id": "",
+          "EventTag": [
+            {
+              "id": "",
+              "Tag": {
+                "id": "",
+                "name": "",
+                "colour": "",
+                "is_galaxy": ""
+              },
+              "local": "",
+              "tag_id": "",
+              "event_id": ""
+            }
+          ],
+          "analysis": "",
+          "protected": "",
+          "published": "",
+          "timestamp": "",
+          "distribution": "",
+          "extends_uuid": "",
+          "attribute_count": "",
+          "threat_level_id": "",
+          "sharing_group_id": "",
+          "publish_timestamp": "",
+          "sighting_timestamp": "",
+          "disable_correlation": "",
+          "proposal_email_lock": ""
+        }
+      ],
+      "open": false
     },
     {
       "operation": "get_event",
@@ -1090,6 +1159,71 @@
           }
         }
       ]
+    },
+    {
+      "operation": "generic_rest_api_call",
+      "title": "Execute an API Request",
+      "annotation": "generic_rest_api_call",
+      "description": "Execute any MISP REST API using the specified API method, endpoint, and payload as input parameters.",
+      "category": "investigation",
+      "handler_method": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "method",
+          "title": "HTTP Method",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "value": "GET",
+          "tooltip": "Select an HTTP action for the request. You can select from the following options:  \n\nDELETE \n\nGET \n\nPATCH \n\nPOST \n\nPUT ",
+          "description": "Select an HTTP action for the request. You can select from the following options:  \n\nDELETE \n\nGET \n\nPATCH \n\nPOST \n\nPUT ",
+          "options": [
+            "DELETE",
+            "GET",
+            "PATCH",
+            "POST",
+            "PUT"
+          ]
+        },
+        {
+          "name": "endpoint",
+          "title": "Endpoint",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Specify the REST API endpoint for the action to perform.",
+          "description": "Specify the REST API endpoint for the action to perform."
+        },
+        {
+          "name": "Query Parameters",
+          "title": "query_params",
+          "type": "json",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "placeholder": {},
+          "value": {},
+          "tooltip": "Specify any optional parameters query parameters in JSON format.",
+          "description": "Specify any optional parameters query parameters in JSON format."
+        },
+        {
+          "name": "payload",
+          "title": "Payload",
+          "type": "json",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "placeholder": {},
+          "value": {},
+          "tooltip": "Specify the payload to be passed in JSON format.",
+          "description": "Specify the payload to be passed in JSON format."
+        }
+      ],
+      "output_schema": {}
     }
   ]
 }
