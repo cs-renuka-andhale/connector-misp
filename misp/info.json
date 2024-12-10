@@ -212,7 +212,7 @@
     },
     {
       "operation": "get_events",
-      "title": "Get Events List",
+      "title": "Search Events",
       "category": "investigation",
       "annotation": "get_events",
       "description": "Retrieves information about events from MISP based on the filter you have specified.",
@@ -225,6 +225,7 @@
           "visible": true,
           "editable": true,
           "value": null,
+          "description": "Please provide JSON BODY for searching event index. Refer to MISP /events/index API Documentation",
           "tooltip": "Please provide JSON BODY for searching event index. Refer to MISP /events/index API Documentation"
         }
       ],

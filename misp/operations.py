@@ -74,7 +74,7 @@ class MISP(object):
                 raise ConnectorError('Value {0} of {1} parameter is invalid.'.format(v, k))
             elif type(v) is bool:
                 data[k] = v
-            elif v:
+            elif v or (v == 0 and isinstance(v, int)):
                 data[k] = v
         logger.debug("Query Parameters: {0}".format(payload))
         return data
@@ -313,9 +313,7 @@ def generic_rest_api_call(config, params):
     query_params = params.get('query_params', {})
     method = params.get('method', '')
     payload = params.get('payload')
-    if not endpoint.startswith('/'):
-        endpoint = f'/{endpoint}'
-    return mp.make_rest_call(method=method, url=endpoint, params=query_params, data=payload)
+    return mp.make_rest_call(method=method, url=endpoint, params=query_params, data=json.dumps(payload))
     
 
 def _check_health(config):
