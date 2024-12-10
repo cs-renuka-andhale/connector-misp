@@ -806,7 +806,7 @@
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get Events List",
+          "name": "Search Events",
           "aliasName": null,
           "tag": "#MISP",
           "description": "Retrieves information about events from MISP",
@@ -823,18 +823,18 @@
           "steps": [
             {
               "@type": "WorkflowStep",
-              "name": "Get Events List",
+              "name": "Search Events",
               "description": null,
               "arguments": {
                 "name": "MISP",
                 "config": "4ec63ad6-0a28-445e-858a-30eaa562cfe7",
                 "params": {
-                  "searchJSONBody": "{\n  \"org_id\": 1,\"published\": \"false\"\n}"
+                  "searchJSONBody": "{\n  \"limit\": 5 \n}"
                 },
                 "version": "2.2.0",
                 "connector": "misp",
                 "operation": "get_events",
-                "operationTitle": "Get Events List",
+                "operationTitle": "Search Events",
                 "step_variables": [],
                 "operationOutput": {
                   "Event": {
@@ -1522,7 +1522,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1599463336,
+          "lastModifyDate": 1733820453,
           "collection": "/api/3/workflow_collections/dede779e-d81b-484b-8d4d-f4894cb548df",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/ebf47d43-79be-4bcf-8777-45500d7a1183",
@@ -1533,75 +1533,30 @@
               "description": null,
               "arguments": {
                 "name": "MISP",
-                "config": "",
+                "config": "491eaef6-bcee-4fe8-bcc1-1de097768543",
                 "params": {
-                  "url": "http://asksomerset.com/Old/Bossed/",
                   "date": "",
-                  "info": "Event - Denial of services",
-                  "domain": "facebook.com",
-                  "to_ids": true,
-                  "comment": "This is sample event added for testing",
-                  "dest_ip": "192.168.2.47",
                   "analysis": "Initial",
-                  "published": "",
-                  "source_ip": "192.168.2.45",
-                  "dest_email": "test@yahoo.com",
+                  "published": false,
                   "event_info": "Create Event",
                   "distribution": "Your Organisation Only",
-                  "source_email": "test@yahoo.com",
-                  "threat_level": "High",
-                  "other_attributes": "{\n  \"port\": \"80\"\n}",
-                  "attribute_distribution": "This Community Only"
+                  "extends_uuid": false,
+                  "threat_level": "Undefined",
+                  "additional_attributes": false
                 },
                 "version": "2.2.0",
                 "connector": "misp",
                 "operation": "create_event",
-                "operationTitle": "Create Event",
-                "step_variables": [],
-                "operationOutput": {
-                  "Event": {
-                    "id": "",
-                    "Org": {
-                      "id": "",
-                      "name": "",
-                      "uuid": ""
-                    },
-                    "Orgc": {
-                      "id": "",
-                      "name": "",
-                      "uuid": ""
-                    },
-                    "date": "",
-                    "info": "",
-                    "uuid": "",
-                    "Galaxy": [],
-                    "Object": [],
-                    "locked": "",
-                    "org_id": "",
-                    "orgc_id": "",
-                    "analysis": "",
-                    "Attribute": [],
-                    "published": "",
-                    "timestamp": "",
-                    "RelatedEvent": [],
-                    "distribution": "",
-                    "ShadowAttribute": [],
-                    "attribute_count": "",
-                    "threat_level_id": "",
-                    "sharing_group_id": "",
-                    "publish_timestamp": "",
-                    "disable_correlation": "",
-                    "event_creator_email": "",
-                    "proposal_email_lock": ""
-                  }
-                }
+                "operationTitle": "Add Event",
+                "pickFromTenant": false,
+                "step_variables": []
               },
               "status": null,
-              "top": "165",
-              "left": "125",
+              "top": "160",
+              "left": "320",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
               "group": null,
-              "uuid": "812ef283-4b2e-41e9-8e6d-54ef62a41635"
+              "uuid": "a0c70b82-7aa4-4e2b-beaf-da16ce559bda"
             },
             {
               "@type": "WorkflowStep",
@@ -1642,26 +1597,26 @@
           "routes": [
             {
               "@type": "WorkflowRoute",
-              "name": "Alerts -> Create Event",
-              "targetStep": "/api/3/workflow_steps/812ef283-4b2e-41e9-8e6d-54ef62a41635",
+              "name": "Start -> Add Event",
+              "targetStep": "/api/3/workflow_steps/a0c70b82-7aa4-4e2b-beaf-da16ce559bda",
               "sourceStep": "/api/3/workflow_steps/ebf47d43-79be-4bcf-8777-45500d7a1183",
               "label": null,
               "isExecuted": false,
               "group": null,
-              "uuid": "bbdcfec9-ee63-4b28-8e7d-b83602061c0c"
+              "uuid": "56574595-13c2-47e1-bc11-b28ab34e3a32"
             }
           ],
           "groups": [],
           "priority": null,
           "uuid": "b049627c-cc06-4641-a3da-a3f4f40f30b0",
-          "id": 3176,
+          "id": 2531,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "MISP",
-            "misp"
+            "misp",
+            "MISP"
           ]
         },
         {

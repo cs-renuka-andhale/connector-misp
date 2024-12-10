@@ -212,7 +212,7 @@
     },
     {
       "operation": "get_events",
-      "title": "Get Events List",
+      "title": "Search Events",
       "category": "investigation",
       "annotation": "get_events",
       "description": "Retrieves information about events from MISP based on the filter you have specified.",
