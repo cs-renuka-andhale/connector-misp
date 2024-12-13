@@ -3,5 +3,5 @@
 Following enhancements have been made to the MSIP Connector in version 2.2.0: 
 
 - Added following new actions:
-  - Get Events List
+  - Search Events
   - Execute an API Request
